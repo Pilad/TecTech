@@ -1,16 +1,8 @@
-# TecTech [![Build Status](http://jenkins.usrv.eu:8080/buildStatus/icon?job=Tec%20Tech)](http://jenkins.usrv.eu:8080/job/Tec%20Tech)
+# TecTech
 GT additions EXTREME
 
 # WIKI
 https://github.com/Technus/TecTech/wiki
-
-# Jenkins Builds
-http://jenkins.usrv.eu:8080/job/Tec%20Tech/
-
-# Runtime Dependencies?
-https://github.com/Technus/TecTech/blob/master/src/main/java/com/github/technus/tectech/TecTech.java#L33
-- Required After
-
 
 # MIT License
 
