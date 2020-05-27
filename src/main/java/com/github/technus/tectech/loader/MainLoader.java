@@ -72,13 +72,10 @@ public final class MainLoader {
     }
 
     public static void load() {
-        ProgressManager.ProgressBar progressBarLoad = ProgressManager.push("TecTech Loader", 9);
 
-        progressBarLoad.step("Elemental Things");
         new ElementalLoader().run();
         LOGGER.info("Elemental Init Done");
 
-        progressBarLoad.step("Thaumcraft Compatibility");
         if (Loader.isModLoaded(Reference.THAUMCRAFT)) {
             essentiaContainerCompat = new EssentiaCompatEnabled();
         } else {
@@ -86,44 +83,34 @@ public final class MainLoader {
         }
         LOGGER.info("Thaumcraft Compatibility Done");
 
-        progressBarLoad.step("Regular Things");
         new ThingsLoader().run();
         LOGGER.info("Block/Item Init Done");
 
-        progressBarLoad.step("Machine Things");
         new MachineLoader().run();
         LOGGER.info("Machine Init Done");
 
-        progressBarLoad.step("Cover Things");
         new CoverLoader().run();
         LOGGER.info("Cover Init Done");
 
-        progressBarLoad.step("Register entities");
         new EntityLoader().run();
         LOGGER.info("Entities registered");
 
-        progressBarLoad.step("Add damage types");
         microwaving =new DamageSource("microwaving").setDamageBypassesArmor();
         elementalPollution =new DamageSource("elementalPollution").setDamageBypassesArmor();
         subspace =new DamageSource("subspace").setDamageBypassesArmor().setDamageIsAbsolute();
         LOGGER.info("Damage types addition Done");
 
-        progressBarLoad.step("Register Packet Dispatcher");
         new NetworkDispatcher();
         LOGGER.info("Packet Dispatcher registered");
 
-        progressBarLoad.step("Register GUI Handler");
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new ModGuiHandler());
         proxy.registerRenderInfo();
         LOGGER.info("GUI Handler registered");
 
-        ProgressManager.pop(progressBarLoad);
     }
 
     public static void postLoad() {
-        ProgressManager.ProgressBar progressBarPostLoad = ProgressManager.push("TecTech Post Loader", 6);
 
-        progressBarPostLoad.step("Dreamcraft Compatibility");
         if(Loader.isModLoaded(Reference.DREAMCRAFT)){
             try {
                 Class<?> clazz = Class.forName("com.dreammaster.gthandler.casings.GT_Container_CasingsNH");
@@ -137,7 +124,6 @@ public final class MainLoader {
             }
         }
 
-        progressBarPostLoad.step("Thaumcraft Compatibility");
         if (Loader.isModLoaded(Reference.THAUMCRAFT)) {
             aspectDefinitionCompat = new AspectDefinitionCompatEnabled();
             aspectDefinitionCompat.run();
@@ -145,28 +131,15 @@ public final class MainLoader {
             aspectDefinitionCompat = new AspectDefinitionCompat();
         }
 
-        progressBarPostLoad.step("Recipes");
         new RecipeLoader().run();
         TecTech.LOGGER.info("Recipe Init Done");
 
-        progressBarPostLoad.step("Register Extra Hazmat Suits");
         registerExtraHazmats();
         TecTech.LOGGER.info("Hazmat additions done");
 
-        if (!configTecTech.DISABLE_BLOCK_HARDNESS_NERF) {
-            progressBarPostLoad.step("Nerf blocks blast resistance");
-            fixBlocks();
-            TecTech.LOGGER.info("Blocks nerf done");
-        } else {
-            progressBarPostLoad.step("Do not nerf blocks blast resistance");
-            TecTech.LOGGER.info("Blocks were not nerfed");
-        }
-
-        progressBarPostLoad.step("Constructable stuff");
         new ConstructableLoader().run();
         TecTech.LOGGER.info("Constructable initialized");
 
-        ProgressManager.pop(progressBarPostLoad);
     }
 
     private static void registerExtraHazmats() {
@@ -313,66 +286,4 @@ public final class MainLoader {
         return 0;
     }
 
-    private static void fixBlocks(){
-        HashSet<String> modIDs=new HashSet<>(Arrays.asList(
-                "minecraft",
-                "IC2",
-                "gregtech",
-                Reference.DREAMCRAFT,
-                Reference.GTPLUSPLUS,
-                "GT++DarkWorld",
-                "GalacticraftCore",
-                "GalacticraftMars",
-                "GalaxySpace",
-                "extracells",
-                "Avaritia",
-                "avaritiaddons",
-                "EnderStorage",
-                "enhancedportals",
-                "DraconicEvolution",
-                "IC2NuclearControl",
-                "IronChest",
-                "irontank",
-                "opensecurity",
-                "openmodularturrets",
-                "Railcraft",
-                "RIO",
-                "SGCraft",
-                "appliedenergistics2",
-                "thaumicenergistics",
-                "witchery",
-                "lootgames",
-                "utilityworlds",
-                Reference.MODID
-        ));
-        for(Block block : GameData.getBlockRegistry().typeSafeIterable()) {
-            GameRegistry.UniqueIdentifier uniqueIdentifier=GameRegistry.findUniqueIdentifierFor(block);
-            if (uniqueIdentifier != null) {
-                if (block.blockHardness < 0 || modIDs.contains(uniqueIdentifier.modId)) {
-                    continue;
-                } else if ("OpenBlocks".equals(uniqueIdentifier.modId)) {
-                    if ("grave".equals(uniqueIdentifier.name)) {
-                        continue;
-                    }
-                } else if ("TwilightForest".equals(uniqueIdentifier.modId)) {
-                    if ("tile.TFShield".equals(uniqueIdentifier.name)) {
-                        block.setResistance(30);
-                        continue;
-                    } else if ("tile.TFThorns".equals(uniqueIdentifier.name)) {
-                        block.setResistance(10);
-                        continue;
-                    } else if ("tile.TFTowerTranslucent".equals(uniqueIdentifier.name)) {
-                        block.setResistance(30);
-                        continue;
-                    } else if ("tile.TFDeadrock".equals(uniqueIdentifier.name)) {
-                        block.setResistance(5);
-                        continue;
-                    } else {
-                        continue;
-                    }
-                }
-            }
-            block.setResistance(5);
-        }
-    }
 }

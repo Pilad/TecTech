@@ -331,7 +331,7 @@ public class GT_MetaTileEntity_Hatch_Rack extends GT_MetaTileEntity_Hatch {
             new RackComponent("dreamcraft:item.QuantumCircuit", 128, 48, -.6f, 9000, true);
         }
         
-        if (Loader.isModLoaded(Reference.SPARTAKCORE)) {
+        if (Loader.isModLoaded(Reference.IMPACT)) {
             //CustomGT5u circuits
             //these components causes crashes when used with the original GT5u
             new RackComponent(ItemList.NandChip.get(1), 2, 6, 0, 750, true);//Primitive Circuit
