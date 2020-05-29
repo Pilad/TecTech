@@ -110,8 +110,6 @@ public class RecipeLoader implements Runnable {
 
         if (Loader.isModLoaded(Reference.IMPACT)) {
         	new SpartakCoreRecipeLoader().run();//init recipes for IMPACT version
-        } else {
-            new BloodyRecipeLoader().run();//init recipes for NON-GTNH version
         }
     }
 }

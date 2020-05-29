@@ -11,18 +11,6 @@ import net.minecraft.item.ItemStack;
 import static gregtech.api.enums.GT_Values.W;
 
 public enum CustomItemList implements IItemContainer {
-    Casing_UEV, Casing_UIV, Casing_UMV, Casing_UXV, Casing_OPV, Casing_MAXV,
-    Hull_UEV, Hull_UIV, Hull_UMV, Hull_UXV, Hull_OPV, Hull_MAXV,
-    Transformer_UEV_UHV, Transformer_UIV_UEV, Transformer_UMV_UIV,
-    Transformer_UXV_UMV, Transformer_OPV_UXV, Transformer_MAXV_OPV,
-    WetTransformer_LV_ULV, WetTransformer_MV_LV, WetTransformer_HV_MV, WetTransformer_EV_HV,
-    WetTransformer_IV_EV, WetTransformer_LuV_IV, WetTransformer_ZPM_LuV, WetTransformer_UV_ZPM,
-    WetTransformer_UHV_UV, WetTransformer_UEV_UHV, WetTransformer_UIV_UEV, WetTransformer_UMV_UIV,
-    WetTransformer_UXV_UMV, WetTransformer_OPV_UXV, WetTransformer_MAXV_OPV,
-
-    Transformer_HA_UEV_UHV, Transformer_HA_UIV_UEV, Transformer_HA_UMV_UIV, Transformer_HA_UXV_UMV,
-    Transformer_HA_OPV_UXV, Transformer_HA_MAXV_OPV,
-
     hatch_CreativeMaintenance, hatch_CreativeData,
     Machine_OwnerDetector, Machine_DataReader,
     Machine_BuckConverter_IV, Machine_BuckConverter_LuV, Machine_BuckConverter_ZPM,
