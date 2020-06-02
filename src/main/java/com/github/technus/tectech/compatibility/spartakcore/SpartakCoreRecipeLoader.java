@@ -501,6 +501,197 @@ public class SpartakCoreRecipeLoader implements Runnable {
                         new FluidStack(FluidRegistry.getFluid("ic2coolant"), 2000),
                 }, CustomItemList.Machine_Multi_Infuser.get(1), 8000, 2000000);
 
+        //Dynamo Hatches IV-UHV
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        ItemList.Hatch_Dynamo_IV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt04, Materials.Tungsten, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.TungstenSteel, 2)},
+                Materials.Silver.getMolten(144),
+                CustomItemList.eM_dynamoMulti4_IV.get(1), 100, 1920);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        CustomItemList.eM_dynamoMulti4_IV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt08, Materials.Tungsten, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.TungstenSteel, 4)},
+                Materials.Electrum.getMolten(144),
+                CustomItemList.eM_dynamoMulti16_IV.get(1), 200, 1920);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        CustomItemList.eM_dynamoMulti16_IV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt12, Materials.Tungsten, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.TungstenSteel, 6)},
+                Materials.Tungsten.getMolten(144),
+                CustomItemList.eM_dynamoMulti64_IV.get(1), 400, 1920);
+
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        ItemList.Hatch_Dynamo_LuV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt04, Materials.VanadiumGallium, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Chrome, 2)},
+                Materials.Silver.getMolten(288),
+                CustomItemList.eM_dynamoMulti4_LuV.get(1), 100, 7860);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        CustomItemList.eM_dynamoMulti4_LuV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt08, Materials.VanadiumGallium, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Chrome, 4)},
+                Materials.Electrum.getMolten(288),
+                CustomItemList.eM_dynamoMulti16_LuV.get(1), 200, 7860);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        CustomItemList.eM_dynamoMulti16_LuV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt12, Materials.VanadiumGallium, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Chrome, 6)},
+                Materials.Tungsten.getMolten(288),
+                CustomItemList.eM_dynamoMulti64_LuV.get(1), 400, 7860);
+
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        ItemList.Hatch_Dynamo_ZPM.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt04, Materials.Naquadah, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Iridium, 2)},
+                Materials.Silver.getMolten(576),
+                CustomItemList.eM_dynamoMulti4_ZPM.get(1), 100, 30720);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        CustomItemList.eM_dynamoMulti4_ZPM.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt08, Materials.Naquadah, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Iridium, 4)},
+                Materials.Electrum.getMolten(576),
+                CustomItemList.eM_dynamoMulti16_ZPM.get(1), 200, 30720);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        CustomItemList.eM_dynamoMulti16_ZPM.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt12, Materials.Naquadah, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Iridium, 6)},
+                Materials.Tungsten.getMolten(576),
+                CustomItemList.eM_dynamoMulti64_ZPM.get(1), 400, 30720);
+
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        ItemList.Hatch_Dynamo_UV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt04, Materials.NaquadahAlloy, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Osmium, 2)},
+                Materials.Silver.getMolten(1152),
+                CustomItemList.eM_dynamoMulti4_UV.get(1), 100, 122880);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        CustomItemList.eM_dynamoMulti4_UV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt08, Materials.NaquadahAlloy, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Osmium, 4)},
+                Materials.Electrum.getMolten(1152),
+                CustomItemList.eM_dynamoMulti16_UV.get(1), 200, 122880);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        CustomItemList.eM_dynamoMulti16_UV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt12, Materials.NaquadahAlloy, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Osmium, 6)},
+                Materials.Tungsten.getMolten(1152),
+                CustomItemList.eM_dynamoMulti64_UV.get(1), 400, 122880);
+
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        ItemList.Hatch_Dynamo_MAX.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt04, Materials.Superconductor, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Neutronium, 2)},
+                Materials.Silver.getMolten(2304),
+                CustomItemList.eM_dynamoMulti4_UHV.get(1), 100, 500000);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        CustomItemList.eM_dynamoMulti4_UHV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt08, Materials.Superconductor, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Neutronium, 4)},
+                Materials.Electrum.getMolten(2304),
+                CustomItemList.eM_dynamoMulti16_UHV.get(1), 200, 500000);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        CustomItemList.eM_dynamoMulti16_UHV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt12, Materials.Superconductor, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Neutronium, 6)},
+                Materials.Tungsten.getMolten(2304),
+                CustomItemList.eM_dynamoMulti64_UHV.get(1), 400, 500000);
+
+        //Energy Hatches 4A-64A  IV-UHV
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        ItemList.Hatch_Energy_IV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt04, Materials.Tungsten, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.TungstenSteel, 2)},
+                Materials.Silver.getMolten(144),
+                CustomItemList.eM_energyMulti4_IV.get(1), 100, 7680);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        CustomItemList.eM_energyMulti4_IV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt08, Materials.Tungsten, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.TungstenSteel, 4)},
+                Materials.Electrum.getMolten(144),
+                CustomItemList.eM_energyMulti16_IV.get(1), 200, 7680);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        CustomItemList.eM_energyMulti16_IV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt12, Materials.Tungsten, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.TungstenSteel, 6)},
+                Materials.Tungsten.getMolten(144),
+                CustomItemList.eM_energyMulti64_IV.get(1), 400, 7680);
+
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        ItemList.Hatch_Energy_LuV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt04, Materials.VanadiumGallium, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Chrome, 2)},
+                Materials.Silver.getMolten(288),
+                CustomItemList.eM_energyMulti4_LuV.get(1), 100, 30720);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        CustomItemList.eM_energyMulti4_LuV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt08, Materials.VanadiumGallium, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Chrome, 4)},
+                Materials.Electrum.getMolten(288),
+                CustomItemList.eM_energyMulti16_LuV.get(1), 200, 30720);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        CustomItemList.eM_energyMulti16_LuV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt12, Materials.VanadiumGallium, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Chrome, 6)},
+                Materials.Tungsten.getMolten(288),
+                CustomItemList.eM_energyMulti64_LuV.get(1), 400, 30720);
+
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        ItemList.Hatch_Energy_ZPM.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt04, Materials.Naquadah, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Iridium, 2)},
+                Materials.Silver.getMolten(576),
+                CustomItemList.eM_energyMulti4_ZPM.get(1), 100, 122880);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        CustomItemList.eM_energyMulti4_ZPM.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt08, Materials.Naquadah, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Iridium, 4)},
+                Materials.Electrum.getMolten(576),
+                CustomItemList.eM_energyMulti16_ZPM.get(1), 200, 122880);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        CustomItemList.eM_energyMulti16_ZPM.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt12, Materials.Naquadah, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Iridium, 6)},
+                Materials.Tungsten.getMolten(576),
+                CustomItemList.eM_energyMulti64_ZPM.get(1), 400, 122880);
+
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        ItemList.Hatch_Energy_UV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt04, Materials.NaquadahAlloy, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Osmium, 2)},
+                Materials.Silver.getMolten(1152),
+                CustomItemList.eM_energyMulti4_UV.get(1), 100, 500000);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        CustomItemList.eM_energyMulti4_UV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt08, Materials.NaquadahAlloy, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Osmium, 4)},
+                Materials.Electrum.getMolten(1152),
+                CustomItemList.eM_energyMulti16_UV.get(1), 200, 500000);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        CustomItemList.eM_energyMulti16_UV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt12, Materials.NaquadahAlloy, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Osmium, 6)},
+                Materials.Tungsten.getMolten(1152),
+                CustomItemList.eM_energyMulti64_UV.get(1), 400, 500000);
+
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        ItemList.Hatch_Energy_MAX.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt04, Materials.Superconductor, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Neutronium, 2)},
+                Materials.Silver.getMolten(2304),
+                CustomItemList.eM_energyMulti4_UHV.get(1), 100, 500000);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        CustomItemList.eM_energyMulti4_UHV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt08, Materials.Superconductor, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Neutronium, 4)},
+                Materials.Electrum.getMolten(2304),
+                CustomItemList.eM_energyMulti16_UHV.get(1), 200, 500000);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                        CustomItemList.eM_energyMulti16_UHV.get(1),
+                        GT_OreDictUnificator.get(OrePrefixes.wireGt12, Materials.Superconductor, 2),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Neutronium, 6)},
+                Materials.Tungsten.getMolten(2304),
+                CustomItemList.eM_energyMulti64_UHV.get(1), 400, 500000);
         
         //endregion
         register_machine_EM_behaviours();
