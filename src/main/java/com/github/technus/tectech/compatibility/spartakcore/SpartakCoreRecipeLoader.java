@@ -332,18 +332,48 @@ public class SpartakCoreRecipeLoader implements Runnable {
                 CustomItemList.eM_Computer_Casing.get(1),
                 ItemList.Circuit_Masterquantumcomputer.get(1),
                 CustomItemList.DATApipe.get(4),
-                ItemList.Cover_Screen.get(1 ),
+                ItemList.Cover_Screen.get(1),
                 new ItemStack(Blocks.stone_button, 16),
+                GT_Utility.getIntegratedCircuit(1),
         }, Materials.Iridium.getMolten(2592), CustomItemList.Parametrizer_Hatch.get(1), 800, 122880);
-        //Uncertainty
+		
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
                 CustomItemList.eM_Computer_Casing.get(1),
                 ItemList.Circuit_Ultimatecrystalcomputer.get(1),
+                CustomItemList.DATApipe.get(6),
+                ItemList.Cover_Screen.get(1),
+                new ItemStack(Blocks.stone_button, 32),
+                GT_Utility.getIntegratedCircuit(2),
+        }, Materials.Iridium.getMolten(2592), CustomItemList.ParametrizerX_Hatch.get(1), 1000, 500000);
+
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                CustomItemList.eM_Computer_Casing.get(1),
+                ItemList.Circuit_Biomainframe.get(1),
+                CustomItemList.DATApipe.get(8),
+                ItemList.Cover_Screen.get(2),
+                new ItemStack(Blocks.stone_button, 64),
+                GT_Utility.getIntegratedCircuit(3),
+        }, Materials.Iridium.getMolten(2592), CustomItemList.ParametrizerTXT_Hatch.get(1), 1200, 2000000);
+		
+        //Uncertainty
+        addAssemblerRecipeWithCleanroom(new ItemStack[]{
+                CustomItemList.eM_Computer_Casing.get(1),
+                ItemList.Circuit_Ultimatecrystalcomputer.get(1),
                 CustomItemList.DATApipe.get(16),
-                ItemList.Cover_Screen.get(1 ),
+                ItemList.Cover_Screen.get(1),
                 new ItemStack(Blocks.stone_button, 16),
+                GT_Utility.getIntegratedCircuit(4),
         }, Materials.Iridium.getMolten(2592), CustomItemList.Uncertainty_Hatch.get(1), 1200, 122880);
 
+        addAssemblerRecipeWithCleanroom(new ItemStack[]{
+                CustomItemList.eM_Computer_Casing.get(1),
+                ItemList.Circuit_Biomainframe.get(1),
+                CustomItemList.DATApipe.get(32),
+                ItemList.Cover_Screen.get(1),
+                new ItemStack(Blocks.stone_button, 16),
+                GT_Utility.getIntegratedCircuit(5),
+        }, Materials.Iridium.getMolten(2592), CustomItemList.UncertaintyX_Hatch.get(1), 1400, 500000);
+		
         //Elemental Input
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
                 CustomItemList.eM_Containment.get(1),
