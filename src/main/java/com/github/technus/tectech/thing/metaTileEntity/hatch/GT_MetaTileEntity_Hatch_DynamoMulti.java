@@ -20,7 +20,7 @@ public class GT_MetaTileEntity_Hatch_DynamoMulti extends GT_MetaTileEntity_Hatch
     public final int Amperes;
 
     public GT_MetaTileEntity_Hatch_DynamoMulti(int aID, String aName, String aNameRegional, int aTier, int aAmp) {
-        super(aID, aName, aNameRegional, aTier, 0, translateToLocal("gt.blockmachines.hatch.dynamomulti.desc.0"));//Multiple Ampere Energy Extractor for Multiblocks
+        super(aID, aName, aNameRegional, aTier, 0, "Multiple Ampere Energy Extractor for Multiblocks");//Multiple Ampere Energy Extractor for Multiblocks
         Amperes = aAmp;
         Util.setTier(aTier, this);
     }
