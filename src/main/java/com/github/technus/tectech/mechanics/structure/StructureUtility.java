@@ -339,6 +339,7 @@ public class StructureUtility {
         return new IStructureElement<T>() {
             @Override
             public boolean check(T t, World world, int x, int y, int z) {
+                if (meta == -1) return block == world.getBlock(x, y, z);
                 return block == world.getBlock(x, y, z) && meta == world.getBlockMetadata(x, y, z);
             }
 
@@ -358,6 +359,10 @@ public class StructureUtility {
 
     public static <T> IStructureElement<T> ofBlock(Block block, int meta) {
         return ofBlock(block, meta, block, meta);
+    }
+
+    public static <T> IStructureElement<T> ofBlock(Block block) {
+        return ofBlock(block, -1, block, 0);
     }
 
     //endregion
