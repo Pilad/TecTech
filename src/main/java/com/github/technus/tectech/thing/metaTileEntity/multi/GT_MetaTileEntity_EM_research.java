@@ -60,7 +60,7 @@ public class GT_MetaTileEntity_EM_research extends GT_MetaTileEntity_MultiblockB
     private String machineType;
     private static final String assembly="Assembly line";
     private ItemStack holdItem;
-    private long computationRemaining, computationRequired;
+    public long computationRemaining, computationRequired;
 
     private static LinkedHashMap<String, String> lServerNames;
 
