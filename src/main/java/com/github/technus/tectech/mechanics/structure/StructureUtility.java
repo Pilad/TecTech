@@ -162,12 +162,36 @@ public class StructureUtility {
     /**
      * Check always returns: true.
      *
+     * @param block
+     * @param meta
+     * @param icons
+     * @param <T>
+     * @return
+     */
+    public static <T> IStructureElementNoPlacement<T> ofBlockHintDeferred(Block block, int meta, Supplier<IIcon[]> icons) {
+        return new IStructureElementNoPlacement<T>() {
+            @Override
+            public boolean check(T t, World world, int x, int y, int z) {
+                return block == world.getBlock(x, y, z) && meta == world.getBlockMetadata(x, y, z);
+            }
+
+            @Override
+            public boolean spawnHint(T t, World world, int x, int y, int z, ItemStack trigger) {
+                TecTech.proxy.hint_particle(world, x, y, z, icons.get());
+                return false;
+            }
+        };
+    }
+
+    /**
+     * Check always returns: true.
+     *
      * @param icons
      * @param RGBa
      * @param <T>
      * @return
      */
-    public static <T> IStructureElementNoPlacement<T> ofHintDeferred(Supplier<IIcon[]> icons,short[] RGBa) {
+    public static <T> IStructureElementNoPlacement<T> ofHintDeferred(Supplier<IIcon[]> icons, short[] RGBa) {
         return new IStructureElementNoPlacement<T>() {
             @Override
             public boolean check(T t, World world, int x, int y, int z) {
@@ -176,7 +200,33 @@ public class StructureUtility {
 
             @Override
             public boolean spawnHint(T t, World world, int x, int y, int z, ItemStack trigger) {
-                TecTech.proxy.hint_particle_tinted(world, x, y, z, icons.get(),RGBa);
+                TecTech.proxy.hint_particle_tinted(world, x, y, z, icons.get(), RGBa);
+                return false;
+            }
+        };
+    }
+
+    /**
+     * Check always returns: true.
+     *
+     * @param block
+     * @param meta
+     * @param icons
+     * @param <T>
+     * @param RGBa
+     * @return
+     */
+    public static <T> IStructureElementNoPlacement<T> ofHintDeferred(Block block, int meta, Supplier<IIcon[]> icons, short[] RGBa) {
+        return new IStructureElementNoPlacement<T>() {
+            @Override
+            public boolean check(T t, World world, int x, int y, int z) {
+                if (meta == -1) return block == world.getBlock(x, y, z);
+                return block == world.getBlock(x, y, z) && meta == world.getBlockMetadata(x, y, z);
+            }
+
+            @Override
+            public boolean spawnHint(T t, World world, int x, int y, int z, ItemStack trigger) {
+                TecTech.proxy.hint_particle_tinted(world, x, y, z, icons.get(), RGBa);
                 return false;
             }
         };
@@ -453,7 +503,7 @@ public class StructureUtility {
                 TileEntity tileEntity = world.getTileEntity(x, y, z);
                 return (tileEntity instanceof IGregTechTileEntity &&
                         iHatchAdder.apply(t, (IGregTechTileEntity) tileEntity, (short) textureIndex)) ||
-                                (world.getBlock(x, y, z) == placeCasing && world.getBlockMetadata(x, y, z) == placeCasingMeta);
+                        (world.getBlock(x, y, z) == placeCasing && world.getBlockMetadata(x, y, z) == placeCasingMeta);
             }
 
             @Override
@@ -866,6 +916,7 @@ public class StructureUtility {
 
     /**
      * Used internally, to generate skips for structure definitions
+     *
      * @param a
      * @param b
      * @param c
@@ -878,6 +929,7 @@ public class StructureUtility {
 
     /**
      * Used internally, to generate skips for structure definitions
+     *
      * @param step
      * @param <T>
      * @return
@@ -1192,14 +1244,15 @@ public class StructureUtility {
     /**
      * Transposes shape (swaps B and C axis, can be used to un-transpose transposed shape)
      * WARNING! Do not use on old api...
+     *
      * @param structurePiece shape (transposed shape)
      * @return transposed shape (untransposed shape)
      */
-    public static String[][] transpose(String[][] structurePiece){
-        String[][] shape=new String[structurePiece[0].length][structurePiece.length];
+    public static String[][] transpose(String[][] structurePiece) {
+        String[][] shape = new String[structurePiece[0].length][structurePiece.length];
         for (int i = 0; i < structurePiece.length; i++) {
             for (int j = 0; j < structurePiece[i].length; j++) {
-                shape[j][i]=structurePiece[i][j];
+                shape[j][i] = structurePiece[i][j];
             }
         }
         return shape;
