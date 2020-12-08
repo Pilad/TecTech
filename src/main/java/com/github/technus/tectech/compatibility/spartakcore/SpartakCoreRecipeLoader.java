@@ -60,7 +60,7 @@ public class SpartakCoreRecipeLoader implements Runnable {
                 CustomItemList.DATApipe.get(1),
                 GT_ModHandler.getIC2Item("reinforcedGlass", 1L),
                 GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Osmiridium, 2)
-        }, null, CustomItemList.LASERpipe.get(1), 100, 500000);
+        }, null, CustomItemList.LASERpipe.get(1), 100, 30720);
         
         //endregoin
 
