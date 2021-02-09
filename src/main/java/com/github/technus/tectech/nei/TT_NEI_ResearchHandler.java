@@ -28,6 +28,7 @@ import net.minecraftforge.fluids.FluidStack;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -215,18 +216,18 @@ public class TT_NEI_ResearchHandler extends TemplateRecipeHandler {
             int tSpecial = ((CachedDefaultRecipe) arecipes.get(aRecipeIndex)).mRecipe.mSpecialValue;
             short ampere=(short) (tSpecial & 0xFFFF),minComputationPerSec=(short)(tSpecial>>>16);
 			if (tEUt != 0) {
-                drawText(10, 73, trans("152","Max Total: ") + (1+ (computation-minComputationPerSec) /minComputationPerSec) * (long)tEUt * ampere * 20 + " EU", -16777216);
-                drawText(10, 83, trans("153","Usage: ") + (long)tEUt*ampere + " EU/t", -16777216);
+                drawText(10, 73, trans("152","Max Total: ") + NumberFormat.getNumberInstance().format((1+ (computation-minComputationPerSec) /minComputationPerSec) * (long)tEUt * ampere * 20) + " EU", -16777216);
+                drawText(10, 83, trans("153","Usage: ") + NumberFormat.getNumberInstance().format((long)tEUt*ampere) + " EU/t", -16777216);
 				if (mRecipeMap.mShowVoltageAmperageInNEI) {
-                    drawText(10, 93, trans("154","Voltage: ") + tEUt + " EU", -16777216);
+                    drawText(10, 93, trans("154","Voltage: ") + NumberFormat.getNumberInstance().format(tEUt) + " EU", -16777216);
                     drawText(10, 103, trans("155","Amperage: ") + ampere, -16777216);
 				} else {
                     drawText(10, 93, trans("156","Voltage: unspecified"), -16777216);
                     drawText(10, 103, trans("157","Amperage: unspecified"), -16777216);
 				}
 			}
-            drawText(10, 113, "Computation: "+computation, -16777216);
-            drawText(10, 123, "Min Computation: "+minComputationPerSec + " /s", -16777216);
+            drawText(10, 113, "Computation: "+NumberFormat.getNumberInstance().format(computation), -16777216);
+            drawText(10, 123, "Min Computation: "+NumberFormat.getNumberInstance().format(minComputationPerSec) + " /s", -16777216);
 		} else {
 			int i = 0;
 			for (String descLine : recipeDesc) {
