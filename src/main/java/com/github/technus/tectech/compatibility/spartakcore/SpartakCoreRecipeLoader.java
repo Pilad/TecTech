@@ -317,7 +317,7 @@ public class SpartakCoreRecipeLoader implements Runnable {
                 ItemList.Emitter_ZPM.get(8),
                 ItemList.Robot_Arm_ZPM.get(1),
                 ItemList.Electric_Motor_ZPM.get(2),
-                new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.circuit, Materials.Superconductor, 1)},
+                new Object[]{OrePrefixes.circuit, Materials.Superconductor, 1},
                 new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.cableGt02, Materials.Naquadah, 2)},
                 new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Naquadah, 16)},
                 CustomItemList.DATApipe.get(2),
@@ -443,7 +443,7 @@ public class SpartakCoreRecipeLoader implements Runnable {
         //Quantum Computer
         GT_Values.RA.addAssemblylineRecipe(ItemList.Tool_DataOrb.get(1), 20000, new Object[]{
                 CustomItemList.Machine_Multi_Switch.get(1),
-                new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.circuit, Materials.Superconductor, 2)},
+                new Object[]{OrePrefixes.circuit, Materials.Superconductor, 2},
                 ItemList.Tool_DataOrb.get(1),
                 ItemList.Cover_Screen.get(1),
                 new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.wireGt04, Materials.SuperconductorUV, 8)},
@@ -459,7 +459,7 @@ public class SpartakCoreRecipeLoader implements Runnable {
         GT_Values.RA.addAssemblylineRecipe(ItemList.Machine_IV_Scanner.get(1), 80000, new Object[]{
                 CustomItemList.Machine_Multi_Switch.get(1),
                 ItemList.Sensor_ZPM.get(8),
-                new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.circuit, Materials.Superconductor, 4)},
+                new Object[]{OrePrefixes.circuit, Materials.Superconductor, 4},
                 ItemList.Field_Generator_ZPM.get(1),
                 ItemList.Electric_Motor_ZPM.get(2),
                 new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.cableGt02, Materials.Naquadah, 4)},
