@@ -10,10 +10,7 @@ import com.github.technus.tectech.thing.item.ConstructableTriggerItem;
 import com.github.technus.tectech.thing.item.EuMeterGT;
 import com.github.technus.tectech.thing.item.FrontRotationTriggerItem;
 import cpw.mods.fml.common.Loader;
-import gregtech.api.enums.Dyes;
-import gregtech.api.enums.ItemList;
-import gregtech.api.enums.Materials;
-import gregtech.api.enums.OrePrefixes;
+import gregtech.api.enums.*;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
@@ -44,6 +41,29 @@ public class RecipeLoader implements Runnable {
         for(int i=0;i<=15;i++) {
             RA.addAssemblerRecipe(new ItemStack[]{GT_Utility.getIntegratedCircuit(i), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Cobalt, 1)}, Materials.Aluminium.getMolten(864), new ItemStack(TT_Container_Casings.sHintCasingsTT, 1, i), 32, 120);
         }
+
+        //LuV Tesla Capacitor
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                GT_OreDictUnificator.get(OrePrefixes.cableGt01, Materials.HSSG, 4),
+                GT_OreDictUnificator.get(OrePrefixes.plate, Materials.BatteryAlloy, 14),
+                GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Aluminium, 28),
+                GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Silicone, 28),
+        }, Materials.Epoxid.getMolten(432), CustomItemList.teslaCapacitor.getWithDamage(1, 5), 320, 30720);
+        //ZPM Tesla Capacitor
+        //GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+        //        GT_OreDictUnificator.get(OrePrefixes.cableGt01, Materials.Naquadah, 4),
+        //        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.BatteryAlloy, 16),
+        //        GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Aluminium, 32),
+        //        GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Silicone, 32),
+        //}, Materials.Epoxid.getMolten(504), CustomItemList.teslaCapacitor.getWithDamage(1, 6), 320, 122880);
+        //TODO Allow with the coils, useless alone and will only cause trouble
+
+        //LuV Tesla Capacitor
+        GT_Values.RA.addExtractorRecipe(CustomItemList.teslaCapacitor.getWithDamage(1, 5),
+                GT_OreDictUnificator.get(OrePrefixes.plate, Materials.BatteryAlloy, 14), 300, 2);
+        //ZPM Tesla Capacitor
+        GT_Values.RA.addExtractorRecipe(CustomItemList.teslaCapacitor.getWithDamage(1, 6),
+                GT_OreDictUnificator.get(OrePrefixes.plate, Materials.BatteryAlloy, 16), 300, 2);
 
         //Scrench
         GT_ModHandler.addCraftingRecipe(new ItemStack(FrontRotationTriggerItem.INSTANCE,1),
