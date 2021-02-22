@@ -334,28 +334,46 @@ public class StructureUtility {
         if (blocsMap == null || blocsMap.isEmpty() || defaultBlock == null) {
             throw new IllegalArgumentException();
         }
-        return new IStructureElement<T>() {
-            @Override
-            public boolean check(T t, World world, int x, int y, int z) {
-                Block worldBlock = world.getBlock(x, y, z);
-                return blocsMap.getOrDefault(worldBlock, -1) == worldBlock.getDamageValue(world,x,y,z);
-            }
+        if(defaultBlock instanceof ICustomBlockSetting){
+            return new IStructureElement<T>() {
+                @Override
+                public boolean check(T t, World world, int x, int y, int z) {
+                    Block worldBlock = world.getBlock(x, y, z);
+                    return blocsMap.getOrDefault(worldBlock, -1) == worldBlock.getDamageValue(world, x, y, z);
+                }
 
-            @Override
-            public boolean placeBlock(T t, World world, int x, int y, int z, ItemStack trigger) {
-                if (defaultBlock instanceof ICustomMetaBlock)
-                    ((ICustomMetaBlock)defaultBlock).setBlock(world, x, y, z, defaultMeta);
-                else
+                @Override
+                public boolean placeBlock(T t, World world, int x, int y, int z, ItemStack trigger) {
+                    ((ICustomBlockSetting) defaultBlock).setBlock(world, x, y, z, defaultMeta);
+                    return true;
+                }
+                @Override
+                public boolean spawnHint(T t, World world, int x, int y, int z, ItemStack trigger) {
+                    TecTech.proxy.hint_particle(world, x, y, z, defaultBlock, defaultMeta);
+                    return true;
+                }
+            };
+        } else {
+            return new IStructureElement<T>() {
+                @Override
+                public boolean check(T t, World world, int x, int y, int z) {
+                    Block worldBlock = world.getBlock(x, y, z);
+                    return blocsMap.getOrDefault(worldBlock, -1) == worldBlock.getDamageValue(world, x, y, z);
+                }
+
+                @Override
+                public boolean placeBlock(T t, World world, int x, int y, int z, ItemStack trigger) {
                     world.setBlock(x, y, z, defaultBlock, defaultMeta, 2);
-                return true;
-            }
+                    return true;
+                }
 
-            @Override
-            public boolean spawnHint(T t, World world, int x, int y, int z, ItemStack trigger) {
-                TecTech.proxy.hint_particle(world, x, y, z, defaultBlock, defaultMeta);
-                return true;
-            }
-        };
+                @Override
+                public boolean spawnHint(T t, World world, int x, int y, int z, ItemStack trigger) {
+                    TecTech.proxy.hint_particle(world, x, y, z, defaultBlock, defaultMeta);
+                    return true;
+                }
+            };
+        }
     }
 
     /**
@@ -370,56 +388,97 @@ public class StructureUtility {
                 throw new IllegalArgumentException();
             }
         }
-        return new IStructureElement<T>() {
-            @Override
-            public boolean check(T t, World world, int x, int y, int z) {
-                Block worldBlock = world.getBlock(x, y, z);
-                return blocsMap.getOrDefault(worldBlock, Collections.emptySet()).contains(worldBlock.getDamageValue(world, x, y, z));
-            }
+        if(defaultBlock instanceof ICustomBlockSetting){
+            return new IStructureElement<T>() {
+                @Override
+                public boolean check(T t, World world, int x, int y, int z) {
+                    Block worldBlock = world.getBlock(x, y, z);
+                    return blocsMap.getOrDefault(worldBlock, Collections.emptySet()).contains(worldBlock.getDamageValue(world, x, y, z));
+                }
 
-            @Override
-            public boolean placeBlock(T t, World world, int x, int y, int z, ItemStack trigger) {
-                if (defaultBlock instanceof ICustomMetaBlock)
-                    ((ICustomMetaBlock)defaultBlock).setBlock(world, x, y, z, defaultMeta);
-                else
+                @Override
+                public boolean placeBlock(T t, World world, int x, int y, int z, ItemStack trigger) {
+                    ((ICustomBlockSetting) defaultBlock).setBlock(world, x, y, z, defaultMeta);
+                    return true;
+                }
+
+                @Override
+                public boolean spawnHint(T t, World world, int x, int y, int z, ItemStack trigger) {
+                    TecTech.proxy.hint_particle(world, x, y, z, defaultBlock, defaultMeta);
+                    return true;
+                }
+            };
+        } else {
+            return new IStructureElement<T>() {
+                @Override
+                public boolean check(T t, World world, int x, int y, int z) {
+                    Block worldBlock = world.getBlock(x, y, z);
+                    return blocsMap.getOrDefault(worldBlock, Collections.emptySet()).contains(worldBlock.getDamageValue(world, x, y, z));
+                }
+
+                @Override
+                public boolean placeBlock(T t, World world, int x, int y, int z, ItemStack trigger) {
                     world.setBlock(x, y, z, defaultBlock, defaultMeta, 2);
-                return true;
-            }
+                    return true;
+                }
 
-            @Override
-            public boolean spawnHint(T t, World world, int x, int y, int z, ItemStack trigger) {
-                TecTech.proxy.hint_particle(world, x, y, z, defaultBlock, defaultMeta);
-                return true;
-            }
-        };
+
+                @Override
+                public boolean spawnHint(T t, World world, int x, int y, int z, ItemStack trigger) {
+                    TecTech.proxy.hint_particle(world, x, y, z, defaultBlock, defaultMeta);
+                    return true;
+                }
+
+            };
+        }
     }
 
     public static <T> IStructureElement<T> ofBlock(Block block, int meta, Block defaultBlock, int defaultMeta) {
         if (block == null || defaultBlock == null) {
             throw new IllegalArgumentException();
         }
-        return new IStructureElement<T>() {
-            @Override
-            public boolean check(T t, World world, int x, int y, int z) {
-                if (meta == -1) return block == world.getBlock(x, y, z);
-                return block == world.getBlock(x, y, z) && meta == world.getBlockMetadata(x, y, z);
-            }
+        if(block instanceof ICustomBlockSetting){
+            return new IStructureElement<T>() {
+                @Override
+                public boolean check(T t, World world, int x, int y, int z) {
+                    Block worldBlock = world.getBlock(x, y, z);
+                    return block == worldBlock && meta == worldBlock.getDamageValue(world, x, y, z);
+                }
 
-            @Override
-            public boolean placeBlock(T t, World world, int x, int y, int z, ItemStack trigger) {
-                if (defaultBlock instanceof ICustomMetaBlock)
-                    ((ICustomMetaBlock)defaultBlock).setBlock(world, x, y, z, defaultMeta);
-                else
+                @Override
+                public boolean placeBlock(T t, World world, int x, int y, int z, ItemStack trigger) {
+                    ((ICustomBlockSetting) defaultBlock).setBlock(world, x, y, z, defaultMeta);
+                    return true;
+                }
+
+                @Override
+                public boolean spawnHint(T t, World world, int x, int y, int z, ItemStack trigger) {
+                    TecTech.proxy.hint_particle(world, x, y, z, defaultBlock, defaultMeta);
+                    return true;
+                }
+            };
+        } else {
+
+            return new IStructureElement<T>() {
+                @Override
+                public boolean check(T t, World world, int x, int y, int z) {
+                    Block worldBlock = world.getBlock(x, y, z);
+                    return block == worldBlock && meta == worldBlock.getDamageValue(world, x, y, z);
+                }
+
+                @Override
+                public boolean placeBlock(T t, World world, int x, int y, int z, ItemStack trigger) {
                     world.setBlock(x, y, z, defaultBlock, defaultMeta, 2);
-                return true;
-            }
+                    return true;
+                }
 
-            @Override
-            public boolean spawnHint(T t, World world, int x, int y, int z, ItemStack trigger) {
-                TecTech.proxy.hint_particle(world, x, y, z, defaultBlock, defaultMeta);
-                return true;
-            }
-        };
+                @Override
+                public boolean spawnHint(T t, World world, int x, int y, int z, ItemStack trigger) {
+                    TecTech.proxy.hint_particle(world, x, y, z, defaultBlock, defaultMeta);
+                    return true;
+                }
+            };
+        }
     }
 
     public static <T> IStructureElement<T> ofBlock(Block block, int meta) {
@@ -438,28 +497,47 @@ public class StructureUtility {
         if (iBlockAdder == null || defaultBlock == null) {
             throw new IllegalArgumentException();
         }
-        return new IStructureElement<T>() {
-            @Override
-            public boolean check(T t, World world, int x, int y, int z) {
-                Block worldBlock = world.getBlock(x, y, z);
-                return iBlockAdder.apply(t, worldBlock, worldBlock.getDamageValue(world, x, y, z));
-            }
+        if(defaultBlock instanceof  ICustomBlockSetting){
+            return new IStructureElement<T>() {
+                @Override
+                public boolean check(T t, World world, int x, int y, int z) {
+                    Block worldBlock = world.getBlock(x, y, z);
+                    return iBlockAdder.apply(t, worldBlock, worldBlock.getDamageValue(world, x, y, z));
+                }
 
-            @Override
-            public boolean placeBlock(T t, World world, int x, int y, int z, ItemStack trigger) {
-                if (defaultBlock instanceof ICustomMetaBlock)
-                    ((ICustomMetaBlock)defaultBlock).setBlock(world, x, y, z, defaultMeta);
-                else
+                @Override
+                public boolean placeBlock(T t, World world, int x, int y, int z, ItemStack trigger) {
+                    ((ICustomBlockSetting) defaultBlock).setBlock(world, x, y, z, defaultMeta);
+                    return true;
+                }
+
+                @Override
+                public boolean spawnHint(T t, World world, int x, int y, int z, ItemStack trigger) {
+                    TecTech.proxy.hint_particle(world, x, y, z, defaultBlock, defaultMeta);
+                    return true;
+                }
+            };
+        }else {
+            return new IStructureElement<T>() {
+                @Override
+                public boolean check(T t, World world, int x, int y, int z) {
+                    Block worldBlock = world.getBlock(x, y, z);
+                    return iBlockAdder.apply(t, worldBlock, worldBlock.getDamageValue(world, x, y, z));
+                }
+
+                @Override
+                public boolean placeBlock(T t, World world, int x, int y, int z, ItemStack trigger) {
                     world.setBlock(x, y, z, defaultBlock, defaultMeta, 2);
-                return true;
-            }
+                    return true;
+                }
 
-            @Override
-            public boolean spawnHint(T t, World world, int x, int y, int z, ItemStack trigger) {
-                TecTech.proxy.hint_particle(world, x, y, z, defaultBlock, defaultMeta);
-                return true;
-            }
-        };
+                @Override
+                public boolean spawnHint(T t, World world, int x, int y, int z, ItemStack trigger) {
+                    TecTech.proxy.hint_particle(world, x, y, z, defaultBlock, defaultMeta);
+                    return true;
+                }
+            };
+        }
     }
 
     public static <T> IStructureElement<T> ofBlockAdder(IBlockAdder<T> iBlockAdder, int dots) {
@@ -516,28 +594,53 @@ public class StructureUtility {
         if (iHatchAdder == null || hintBlock == null) {
             throw new IllegalArgumentException();
         }
-        return new IStructureElement<T>() {
-            @Override
-            public boolean check(T t, World world, int x, int y, int z) {
-                Block worldBlock = world.getBlock(x, y, z);
-                TileEntity tileEntity = world.getTileEntity(x, y, z);
-                return (tileEntity instanceof IGregTechTileEntity &&
-                        iHatchAdder.apply(t, (IGregTechTileEntity) tileEntity, (short) textureIndex)) ||
-                        (worldBlock == placeCasing && worldBlock.getDamageValue(world, x, y, z) == placeCasingMeta);
-            }
+        if(placeCasing instanceof ICustomBlockSetting){
+            return new IStructureElement<T>() {
+                @Override
+                public boolean check(T t, World world, int x, int y, int z) {
+                    TileEntity tileEntity = world.getTileEntity(x, y, z);
+                    Block worldBlock = world.getBlock(x, y, z);
+                    return (tileEntity instanceof IGregTechTileEntity &&
+                            iHatchAdder.apply(t, (IGregTechTileEntity) tileEntity, (short) textureIndex)) ||
+                            (worldBlock == placeCasing && worldBlock.getDamageValue(world, x, y, z) == placeCasingMeta);
+                }
 
-            @Override
-            public boolean spawnHint(T t, World world, int x, int y, int z, ItemStack trigger) {
-                TecTech.proxy.hint_particle(world, x, y, z, hintBlock, hintMeta);
-                return true;
-            }
+                @Override
+                public boolean spawnHint(T t, World world, int x, int y, int z, ItemStack trigger) {
+                    TecTech.proxy.hint_particle(world, x, y, z, hintBlock, hintMeta);
+                    return true;
+                }
 
-            @Override
-            public boolean placeBlock(T t, World world, int x, int y, int z, ItemStack trigger) {
-                world.setBlock(x, y, z, placeCasing, placeCasingMeta, 2);
-                return true;
-            }
-        };
+                @Override
+                public boolean placeBlock(T t, World world, int x, int y, int z, ItemStack trigger) {
+                    ((ICustomBlockSetting) placeCasing).setBlock(world, x, y, z, placeCasingMeta);
+                    return true;
+                }
+            };
+        }else {
+            return new IStructureElement<T>() {
+                @Override
+                public boolean check(T t, World world, int x, int y, int z) {
+                    TileEntity tileEntity = world.getTileEntity(x, y, z);
+                    Block worldBlock = world.getBlock(x, y, z);
+                    return (tileEntity instanceof IGregTechTileEntity &&
+                            iHatchAdder.apply(t, (IGregTechTileEntity) tileEntity, (short) textureIndex)) ||
+                            (worldBlock == placeCasing && worldBlock.getDamageValue(world, x, y, z) == placeCasingMeta);
+                }
+
+                @Override
+                public boolean spawnHint(T t, World world, int x, int y, int z, ItemStack trigger) {
+                    TecTech.proxy.hint_particle(world, x, y, z, hintBlock, hintMeta);
+                    return true;
+                }
+
+                @Override
+                public boolean placeBlock(T t, World world, int x, int y, int z, ItemStack trigger) {
+                    world.setBlock(x, y, z, placeCasing, placeCasingMeta, 2);
+                    return true;
+                }
+            };
+        }
     }
 
     //endregion
@@ -1172,7 +1275,7 @@ public class StructureUtility {
                         if (tileEntity == null) {
                             Block block = w.getBlock(x, y, z);
                             if (block != null && block != Blocks.air) {
-                                builder.append(map.get(block.getUnlocalizedName() + '\0' + block.getDamageValue(world,x, y, z)));
+                                builder.append(map.get(block.getUnlocalizedName() + '\0' + block.getDamageValue(world, x, y, z)));
                             } else {
                                 builder.append(' ');
                             }
