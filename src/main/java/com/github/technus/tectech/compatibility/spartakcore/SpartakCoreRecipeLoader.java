@@ -579,24 +579,7 @@ public class SpartakCoreRecipeLoader implements Runnable {
                         Materials.Neutronium.getMolten(1872),
                         new FluidStack(FluidRegistry.getFluid("ic2coolant"), 2000),
                 }, CustomItemList.Machine_Multi_Infuser.get(1), 8000, 2000000);
-
-        //Debug maintenance hatch
-        TT_recipeAdder.addResearchableAssemblylineRecipe(ItemList.Hatch_AutoMaintenance.get(1L),
-                2764800, 128, 500000, 6, new Object[]{
-                        ItemList.Hatch_AutoMaintenance.get(1L),
-                        ItemList.Robot_Arm_UV.get(1L),
-                        ItemList.Electric_Pump_UV.get(1L),
-                        ItemList.Conveyor_Module_UV.get(1L),
-                        new Object[]{OrePrefixes.circuit.get(Materials.Superconductor), 4L},
-                        ItemList.Energy_LapotronicOrb2.get(1L),
-                        ItemList.Duct_Tape.get(64L),
-                        ItemList.Duct_Tape.get(64L),
-                        GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Americium, 64L),
-                }, new FluidStack[]{
-                        Materials.Lubricant.getFluid(256000),
-                        Materials.SolderingAlloy.getMolten(1296L),
-                }, CustomItemList.hatch_CreativeMaintenance.get(1), 6000, 500000);
-
+        
         //Dynamo Hatches IV-UHV
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
                         ItemList.Hatch_Dynamo_EV.get(1L),
