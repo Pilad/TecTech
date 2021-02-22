@@ -9,8 +9,8 @@ import net.minecraft.util.EnumChatFormatting;
 
 import java.util.*;
 
-import static com.github.technus.tectech.mechanics.elementalMatter.core.transformations.bTransformationInfo.AVOGADRO_CONSTANT_UNCERTAINTY;
 import static com.github.technus.tectech.mechanics.elementalMatter.core.transformations.bTransformationInfo.AVOGADRO_CONSTANT;
+import static com.github.technus.tectech.mechanics.elementalMatter.core.transformations.bTransformationInfo.AVOGADRO_CONSTANT_UNCERTAINTY;
 import static com.github.technus.tectech.mechanics.elementalMatter.definitions.primitive.cPrimitiveDefinition.nbtE__;
 import static com.github.technus.tectech.util.DoubleCount.add;
 import static com.github.technus.tectech.util.DoubleCount.sub;
@@ -338,6 +338,7 @@ public final class cElementalInstanceStackMap implements Comparable<cElementalIn
             info[i++] = "Amount " + EnumChatFormatting.GREEN + instance.amount/ AVOGADRO_CONSTANT +" mol";
             info[i++] = "LifeTime " + EnumChatFormatting.GREEN + (instance.getLifeTime()<0?"STABLE":instance.getLifeTime());
         }
+
         return info;
     }
 
@@ -413,20 +414,23 @@ public final class cElementalInstanceStackMap implements Comparable<cElementalIn
     }
 
     //Tick Content
-    public void tickContentByOneSecond(double lifeTimeMult, int postEnergize) {
-        tickContent(lifeTimeMult,postEnergize,1D);
+    public double tickContentByOneSecond(double lifeTimeMult, int postEnergize) {
+        return tickContent(lifeTimeMult,postEnergize,1D);
     }
 
-    public void tickContent(double lifeTimeMult, int postEnergize, double seconds){
+    public double tickContent(double lifeTimeMult, int postEnergize, double seconds){
+        double diff=0;
         for (cElementalInstanceStack instance : values()) {
-            cElementalInstanceStackMap newInstances = instance.decay(lifeTimeMult, instance.age += seconds, postEnergize);
+            cElementalDecayResult newInstances = instance.decay(lifeTimeMult, instance.age += seconds, postEnergize);
             if (newInstances == null) {
                 instance.nextColor();
             } else {
+                diff=add(diff,newInstances.getMassDiff());
                 removeAmount(false,instance);
-                putUnifyAll(newInstances);
+                putUnifyAll(newInstances.getOutput());
             }
         }
+        return diff;
     }
 
     //NBT
