@@ -2,6 +2,8 @@ package com.github.technus.tectech.mechanics.spark;
 
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import eu.usrv.yamcore.network.client.AbstractClientMessageHandler;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,8 +13,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 public class RendererMessage implements IMessage {
-    HashSet<ThaumSpark> sparkList = new HashSet<ThaumSpark>();
 
+    HashSet<ThaumSpark> sparkList;
     public RendererMessage() {
     }
 
@@ -64,6 +66,7 @@ public class RendererMessage implements IMessage {
         }
     }
 
+    @SideOnly(Side.CLIENT)
     private static void thaumLightning(int tX, int tY, int tZ, int tXN, int tYN, int tZN, int wID) {
         //This is enough to check for thaum, since it only ever matters for client side effects (Tested not to crash)
     }
