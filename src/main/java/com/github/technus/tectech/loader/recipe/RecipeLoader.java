@@ -58,6 +58,14 @@ public class RecipeLoader implements Runnable {
         //}, Materials.Epoxid.getMolten(504), CustomItemList.teslaCapacitor.getWithDamage(1, 6), 320, 122880);
         //TODO Allow with the coils, useless alone and will only cause trouble
 
+        //Ender Fluid Link Cover
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
+                GT_OreDictUnificator.get(OrePrefixes.plateDense, Materials.Enderium, 4),
+                ItemList.Sensor_LuV.get(1),
+                ItemList.Emitter_LuV.get(1),
+                ItemList.Electric_Pump_LuV.get(1),
+        }, Materials.Chrome.getMolten(288), CustomItemList.enderLinkFluidCover.getWithDamage(1, 0), 320, 30720);
+
         //LuV Tesla Capacitor
         GT_Values.RA.addExtractorRecipe(CustomItemList.teslaCapacitor.getWithDamage(1, 5),
                 GT_OreDictUnificator.get(OrePrefixes.plate, Materials.BatteryAlloy, 14), 300, 2);
