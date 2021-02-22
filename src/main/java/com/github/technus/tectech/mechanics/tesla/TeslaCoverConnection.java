@@ -1,9 +1,9 @@
 package com.github.technus.tectech.mechanics.tesla;
 
 import com.github.technus.tectech.util.Vec3Impl;
+import com.google.common.base.Objects;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 
-import static com.github.technus.tectech.mechanics.tesla.ITeslaConnectable.TeslaUtil.teslaSimpleNodeSetAdd;
 import static com.github.technus.tectech.mechanics.tesla.ITeslaConnectable.TeslaUtil.teslaSimpleNodeSetRemove;
 
 public class TeslaCoverConnection implements ITeslaConnectableSimple {
@@ -59,5 +59,18 @@ public class TeslaCoverConnection implements ITeslaConnectableSimple {
         }
 
         return output;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TeslaCoverConnection that = (TeslaCoverConnection) o;
+        return Objects.equal(IGT, that.IGT);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(IGT);
     }
 }
