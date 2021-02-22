@@ -42,37 +42,6 @@ public class RecipeLoader implements Runnable {
             RA.addAssemblerRecipe(new ItemStack[]{GT_Utility.getIntegratedCircuit(i), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Cobalt, 1)}, Materials.Aluminium.getMolten(864), new ItemStack(TT_Container_Casings.sHintCasingsTT, 1, i), 32, 120);
         }
 
-        //LuV Tesla Capacitor
-        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                GT_OreDictUnificator.get(OrePrefixes.cableGt01, Materials.HSSG, 4),
-                GT_OreDictUnificator.get(OrePrefixes.plate, Materials.BatteryAlloy, 14),
-                GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Aluminium, 28),
-                GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Silicone, 28),
-        }, Materials.Epoxid.getMolten(432), CustomItemList.teslaCapacitor.getWithDamage(1, 5), 320, 30720);
-        //ZPM Tesla Capacitor
-        //GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-        //        GT_OreDictUnificator.get(OrePrefixes.cableGt01, Materials.Naquadah, 4),
-        //        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.BatteryAlloy, 16),
-        //        GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Aluminium, 32),
-        //        GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Silicone, 32),
-        //}, Materials.Epoxid.getMolten(504), CustomItemList.teslaCapacitor.getWithDamage(1, 6), 320, 122880);
-        //TODO Allow with the coils, useless alone and will only cause trouble
-
-        //Ender Fluid Link Cover
-        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                GT_OreDictUnificator.get(OrePrefixes.plateDense, Materials.Enderium, 4),
-                ItemList.Sensor_LuV.get(1),
-                ItemList.Emitter_LuV.get(1),
-                ItemList.Electric_Pump_LuV.get(1),
-        }, Materials.Chrome.getMolten(288), CustomItemList.enderLinkFluidCover.getWithDamage(1, 0), 320, 30720);
-
-        //LuV Tesla Capacitor
-        GT_Values.RA.addExtractorRecipe(CustomItemList.teslaCapacitor.getWithDamage(1, 5),
-                GT_OreDictUnificator.get(OrePrefixes.plate, Materials.BatteryAlloy, 14), 300, 2);
-        //ZPM Tesla Capacitor
-        GT_Values.RA.addExtractorRecipe(CustomItemList.teslaCapacitor.getWithDamage(1, 6),
-                GT_OreDictUnificator.get(OrePrefixes.plate, Materials.BatteryAlloy, 16), 300, 2);
-
         //Scrench
         GT_ModHandler.addCraftingRecipe(new ItemStack(FrontRotationTriggerItem.INSTANCE,1),
                 GT_ModHandler.RecipeBits.BUFFERED | GT_ModHandler.RecipeBits.NOT_REMOVABLE,
