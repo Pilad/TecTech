@@ -1206,7 +1206,7 @@ public abstract class GT_MetaTileEntity_MultiblockBase_EM extends GT_MetaTileEnt
                                     stopMachine();
                                 }
 
-                                if (mMaxProgresstime > 0 && ++mProgresstime >= mMaxProgresstime && RECIPE_AT == Tick) {//progress increase and done
+                                if (mMaxProgresstime > 0 && ++mProgresstime >= mMaxProgresstime) {//progress increase and done
                                     hatchesStatusUpdate_EM();
 
                                     outputAfterRecipe_EM();
