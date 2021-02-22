@@ -32,7 +32,6 @@ public class GT_Cover_TM_TeslaCoil_Ultimate extends GT_Cover_TM_TeslaCoil {
         return true;
     }
 
-    @Override
     public byte getTeslaReceptionCapability() {
         return 1;
     }
