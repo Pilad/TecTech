@@ -132,17 +132,25 @@ dependencies {
 
 task getGregTech(type: Download) {
     onlyIf {
-        !file("libs/gregtech-${config.gregtech.version}-dev.jar").exists()
+        !file("libs/gregtech-5.09.34.66-impact-dev.jar").exists()
     }
-    src "http://jenkins.usrv.eu:8080/job/Gregtech-5-Unofficial/${config.gregtech.jenkinsbuild}/artifact/build/libs/gregtech-${config.gregtech.version}-dev.jar"
-    dest file("libs/gregtech-${config.gregtech.version}-dev.jar")
+    src "http://gtimpact.space:8080/job/GREGTECH/lastSuccessfulBuild/artifact/build/libs/gregtech-5.09.34.66-impact-dev.jar"
+    dest file("libs/gregtech-5.09.34.66-impact-dev.jar")
     mustRunAfter "deobfBinJar"
     mustRunAfter "repackMinecraft"
-    delete fileTree("$projectDir/libs/") {
-        include 'gregtech-*-dev.jar'
-        exclude "gregtech-${config.gregtech.version}-dev.jar"
-    }
 }
+
+task getAE(type: Download) {
+    onlyIf {
+        !file("libs/appliedenergistics2-rv3-33-impact-dev.jar").exists()
+    }
+    src "http://gtimpact.space:8080/job/APPLIED-ENERGISTICS-2/lastSuccessfulBuild/artifact/build/libs/appliedenergistics2-rv3-33-impact-dev.jar"
+    dest file("libs/appliedenergistics2-rv3-33-impact-dev.jar")
+    mustRunAfter "deobfBinJar"
+    mustRunAfter "repackMinecraft"
+}
+
+
 
 task submodulesUpdate(type: Exec) {
     description 'Updates (and inits) git submodules'
@@ -160,6 +168,11 @@ tasks.setupCIWorkspace.dependsOn getGregTech
 tasks.setupDevWorkspace.dependsOn getGregTech
 tasks.setupDecompWorkspace.dependsOn getGregTech
 tasks.compileJava.dependsOn getGregTech
+
+tasks.setupCIWorkspace.dependsOn getAE
+tasks.setupDevWorkspace.dependsOn getAE
+tasks.setupDecompWorkspace.dependsOn getAE
+tasks.compileJava.dependsOn getAE
 
 processResources
         {
