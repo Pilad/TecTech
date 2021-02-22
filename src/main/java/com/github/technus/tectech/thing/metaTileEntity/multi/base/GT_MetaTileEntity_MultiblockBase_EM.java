@@ -120,7 +120,7 @@ public abstract class GT_MetaTileEntity_MultiblockBase_EM extends GT_MetaTileEnt
     protected byte minRepairStatus = 3;
 
     //can power pass be enabled
-    public boolean ePowerPassUpgraded = false;
+    public boolean ePowerPassCapable = false;
 
     //functionality toggles - changed by buttons in gui also
     public boolean ePowerPass = false, eSafeVoid = false;
@@ -290,7 +290,7 @@ public abstract class GT_MetaTileEntity_MultiblockBase_EM extends GT_MetaTileEnt
      */
     @Override
     protected void addFluidOutputs(FluidStack[] mOutputFluids) {
-        int min = mOutputFluids.length > mOutputHatches.size() ? mOutputHatches.size() : mOutputFluids.length;
+        int min = Math.min(mOutputFluids.length, mOutputHatches.size());
         for (int i = 0; i < min; ++i) {
             if (mOutputHatches.get(i) != null && mOutputFluids[i] != null && GT_MetaTileEntity_MultiBlockBase.isValidMetaTileEntity(mOutputHatches.get(i))) {
                 mOutputHatches.get(i).fill(mOutputFluids[i], true);
@@ -543,11 +543,11 @@ public abstract class GT_MetaTileEntity_MultiblockBase_EM extends GT_MetaTileEnt
                 for (GT_MetaTileEntity_Hatch_ElementalContainer hatch_elemental : eInputHatches) {
                     hatch_elemental.id = -1;
                 }
-                for (GT_MetaTileEntity_Hatch_DataConnector hatch_data : eOutputData) {
+                for (GT_MetaTileEntity_Hatch_OutputData hatch_data : eOutputData) {
                     hatch_data.id = -1;
                     hatch_data.q = null;
                 }
-                for (GT_MetaTileEntity_Hatch_DataConnector hatch_data : eInputData) {
+                for (GT_MetaTileEntity_Hatch_InputData hatch_data : eInputData) {
                     hatch_data.id = -1;
                 }
                 for (GT_MetaTileEntity_Hatch_Uncertainty hatch : eUncertainHatches) {
@@ -721,6 +721,7 @@ public abstract class GT_MetaTileEntity_MultiblockBase_EM extends GT_MetaTileEnt
         aNBT.setByte("eFlip", (byte)extendedFacing.getFlip().getIndex());
         aNBT.setBoolean("eParam", eParameters);
         aNBT.setBoolean("ePass", ePowerPass);
+        aNBT.setBoolean("ePassCapable", ePowerPassCapable);
         aNBT.setBoolean("eVoid", eSafeVoid);
         aNBT.setBoolean("eBoom", eDismantleBoom);
         aNBT.setBoolean("eOK", mMachine);
@@ -814,6 +815,9 @@ public abstract class GT_MetaTileEntity_MultiblockBase_EM extends GT_MetaTileEnt
                 Flip.byIndex(aNBT.getByte("eFlip")));
         eParameters = !aNBT.hasKey("eParam") || aNBT.getBoolean("eParam");
         ePowerPass = aNBT.getBoolean("ePass");
+        if(aNBT.hasKey("ePassCapable")) {
+            ePowerPassCapable = aNBT.getBoolean("ePassCapable");
+        }
         eSafeVoid = aNBT.getBoolean("eVoid");
         eDismantleBoom = aNBT.getBoolean("eBoom");
         mMachine = aNBT.getBoolean("eOK");
