@@ -1495,7 +1495,6 @@ public final class dAtomDefinition extends cElementalDefinition {
         TRANSFORMATION_INFO.addFluid(new cElementalDefinitionStack(getFirstStableIsotope(17), AVOGADRO_CONSTANT_144),Materials.Argon.mGas, 144);
         TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(19), AVOGADRO_CONSTANT_144), dust, Materials.Potassium,1);
         TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(20), AVOGADRO_CONSTANT_144), dust, Materials.Calcium,1);
-        TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(21), AVOGADRO_CONSTANT_144), dust, Materials.Scandium,1);
         TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(22), AVOGADRO_CONSTANT_144), dust, Materials.Titanium,1);
         TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(23), AVOGADRO_CONSTANT_144), dust, Materials.Vanadium,1);
         TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(24), AVOGADRO_CONSTANT_144), dust, Materials.Chrome,1);
@@ -1533,17 +1532,10 @@ public final class dAtomDefinition extends cElementalDefinition {
         TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(56), AVOGADRO_CONSTANT_144), dust, Materials.Barium,1);
         TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(57), AVOGADRO_CONSTANT_144), dust, Materials.Lanthanum,1);
         TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(58), AVOGADRO_CONSTANT_144), dust, Materials.Cerium,1);
-        TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(59), AVOGADRO_CONSTANT_144), dust, Materials.Praseodymium,1);
         TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(60), AVOGADRO_CONSTANT_144), dust, Materials.Neodymium,1);
-        TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(61), AVOGADRO_CONSTANT_144), dust, Materials.Promethium,1);
         TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(62), AVOGADRO_CONSTANT_144), dust, Materials.Samarium,1);
         TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(63), AVOGADRO_CONSTANT_144), dust, Materials.Europium,1);
         TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(64), AVOGADRO_CONSTANT_144), dust, Materials.Gadolinium,1);
-        TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(65), AVOGADRO_CONSTANT_144), dust, Materials.Terbium,1);
-        TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(66), AVOGADRO_CONSTANT_144), dust, Materials.Dysprosium,1);
-        TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(67), AVOGADRO_CONSTANT_144), dust, Materials.Holmium,1);
-        TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(68), AVOGADRO_CONSTANT_144), dust, Materials.Erbium,1);
-        TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(69), AVOGADRO_CONSTANT_144), dust, Materials.Thulium,1);
         TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(70), AVOGADRO_CONSTANT_144), dust, Materials.Ytterbium,1);
         TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(71), AVOGADRO_CONSTANT_144), dust, Materials.Lutetium,1);
         //transformation.addOredict(new cElementalDefinitionStack(getFirstStableIsotope(72), AVOGADRO_CONSTANT_144),OrePrefixes.dust, Materials.Hafnum,1);
