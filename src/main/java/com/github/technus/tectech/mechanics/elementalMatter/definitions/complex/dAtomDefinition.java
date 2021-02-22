@@ -2,8 +2,6 @@ package com.github.technus.tectech.mechanics.elementalMatter.definitions.complex
 
 import com.github.technus.tectech.Reference;
 import com.github.technus.tectech.TecTech;
-import com.github.technus.tectech.util.Util;
-import com.github.technus.tectech.util.XSTR;
 import com.github.technus.tectech.compatibility.gtpp.GtppAtomLoader;
 import com.github.technus.tectech.mechanics.elementalMatter.core.cElementalDecay;
 import com.github.technus.tectech.mechanics.elementalMatter.core.cElementalDefinitionStackMap;
@@ -19,19 +17,21 @@ import com.github.technus.tectech.mechanics.elementalMatter.core.transformations
 import com.github.technus.tectech.mechanics.elementalMatter.definitions.primitive.eBosonDefinition;
 import com.github.technus.tectech.mechanics.elementalMatter.definitions.primitive.eLeptonDefinition;
 import com.github.technus.tectech.mechanics.elementalMatter.definitions.primitive.eNeutrinoDefinition;
+import com.github.technus.tectech.util.Util;
+import com.github.technus.tectech.util.XSTR;
 import cpw.mods.fml.common.Loader;
 import gregtech.api.enums.Materials;
 import net.minecraft.nbt.NBTTagCompound;
 
 import java.util.*;
 
-import static com.github.technus.tectech.mechanics.elementalMatter.core.transformations.bTransformationInfo.AVOGADRO_CONSTANT_144;
-import static com.github.technus.tectech.util.XSTR.XSTR_INSTANCE;
 import static com.github.technus.tectech.compatibility.thaumcraft.elementalMatter.definitions.dComplexAspectDefinition.getNbtTagCompound;
 import static com.github.technus.tectech.loader.TecTechConfig.DEBUG_MODE;
+import static com.github.technus.tectech.mechanics.elementalMatter.core.transformations.bTransformationInfo.AVOGADRO_CONSTANT_144;
 import static com.github.technus.tectech.mechanics.elementalMatter.definitions.primitive.eBosonDefinition.boson_Y__;
 import static com.github.technus.tectech.mechanics.elementalMatter.definitions.primitive.eBosonDefinition.deadEnd;
 import static com.github.technus.tectech.thing.metaTileEntity.multi.GT_MetaTileEntity_EM_scanner.*;
+import static com.github.technus.tectech.util.XSTR.XSTR_INSTANCE;
 import static gregtech.api.enums.OrePrefixes.dust;
 
 /**
@@ -178,7 +178,7 @@ public final class dAtomDefinition extends cElementalDefinition {
                 } else {
                     rawLifeTimeTemp = calculateLifeTime(izoDiff, izoDiffAbs, element, neutralCount, containsAnti);
                 }
-                rawLifeTime = Math.min(rawLifeTimeTemp, iElementalDefinition.STABLE_RAW_LIFE_TIME);
+                rawLifeTime = Math.min(rawLifeTimeTemp, STABLE_RAW_LIFE_TIME);
             }else {
                 rawLifeTime = containsAnti ? iaea.halfTime * 1.5514433E-21d * (1d + xstr.nextDouble() * 9d) : iaea.halfTime;
             }
@@ -193,7 +193,7 @@ public final class dAtomDefinition extends cElementalDefinition {
             } else {
                 rawLifeTimeTemp = calculateLifeTime(izoDiff, izoDiffAbs, element, neutralCount, containsAnti);
             }
-            rawLifeTime = Math.min(rawLifeTimeTemp, iElementalDefinition.STABLE_RAW_LIFE_TIME);
+            rawLifeTime = Math.min(rawLifeTimeTemp, STABLE_RAW_LIFE_TIME);
 
             iaeaDefinitionExistsAndHasEnergyLevels =false;
         }
@@ -208,7 +208,6 @@ public final class dAtomDefinition extends cElementalDefinition {
             decayMode = izoDiff > 0 ? (byte) (Math.min(2, 1 + izoDiffAbs / 4)+ BYTE_OFFSET) : (byte) (-Math.min(2, 1 + izoDiffAbs / 4) + BYTE_OFFSET);
         }
         //this.stable = this.rawLifeTime >= STABLE_RAW_LIFE_TIME;
-
         hash=super.hashCode();
     }
 
@@ -1556,16 +1555,16 @@ public final class dAtomDefinition extends cElementalDefinition {
         TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getBestUnstableIsotope(83), AVOGADRO_CONSTANT_144), dust, Materials.Bismuth,1);
         //transformation.addOredict(new cElementalDefinitionStack(getBestUnstableIsotope(84),AVOGADRO_CONSTANT_144),OrePrefixes.dust, Materials.Polonium,1);
         //transformation.addFluid(new cElementalDefinitionStack(getBestUnstableIsotope(85),AVOGADRO_CONSTANT_144),Materials.Astatine.mPlasma.getID(), 144);
-        TRANSFORMATION_INFO.addFluid(new cElementalDefinitionStack(getBestUnstableIsotope(86),AVOGADRO_CONSTANT_144),Materials.Radon.mGas, 144);
+        TRANSFORMATION_INFO.addFluid(new cElementalDefinitionStack(getBestUnstableIsotope(86), AVOGADRO_CONSTANT_144),Materials.Radon.mGas, 144);
         //transformation.addOredict(new cElementalDefinitionStack(getBestUnstableIsotope(87),AVOGADRO_CONSTANT_144),OrePrefixes.dust, Materials.Francium,1);
         //transformation.addOredict(new cElementalDefinitionStack(getBestUnstableIsotope(88),AVOGADRO_CONSTANT_144),OrePrefixes.dust, Materials.Radium,1);
         //transformation.addOredict(new cElementalDefinitionStack(getBestUnstableIsotope(89),AVOGADRO_CONSTANT_144),OrePrefixes.dust, Materials.Actinium,1);
-        TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getBestUnstableIsotope(90),AVOGADRO_CONSTANT_144), dust, Materials.Thorium,1);
+        TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getBestUnstableIsotope(90), AVOGADRO_CONSTANT_144), dust, Materials.Thorium,1);
         //transformation.addOredict(new cElementalDefinitionStack(getBestUnstableIsotope(91),AVOGADRO_CONSTANT_144),OrePrefixes.dust, Materials.Protactinium,1);
         ////transformation.addOredict(new cElementalDefinitionStack(getBestUnstableIsotope(92),AVOGADRO_CONSTANT_144), dust, Materials.Uranium,1);
         //transformation.addOredict(new cElementalDefinitionStack(getBestUnstableIsotope(93),AVOGADRO_CONSTANT_144),OrePrefixes.dust, Materials.Neptunium,1);
         ////transformation.addOredict(new cElementalDefinitionStack(getBestUnstableIsotope(94),AVOGADRO_CONSTANT_144), dust, Materials.Plutonium,1);
-        TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getBestUnstableIsotope(95),AVOGADRO_CONSTANT_144), dust, Materials.Americium,1);
+        TRANSFORMATION_INFO.addOredict(new cElementalDefinitionStack(getBestUnstableIsotope(95), AVOGADRO_CONSTANT_144), dust, Materials.Americium,1);
 
         try {
             dAtomDefinition temp;
