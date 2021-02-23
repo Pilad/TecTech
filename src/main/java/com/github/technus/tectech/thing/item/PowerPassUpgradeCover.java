@@ -8,13 +8,11 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
 
 import java.util.List;
 
 import static com.github.technus.tectech.Reference.MODID;
-import static com.github.technus.tectech.thing.CustomItemList.enderLinkFluidCover;
-import static net.minecraft.util.StatCollector.translateToLocal;
+import static com.github.technus.tectech.thing.CustomItemList.powerPassCover;
 
 public final class PowerPassUpgradeCover extends Item {
     public static PowerPassUpgradeCover INSTANCE;
@@ -28,15 +26,16 @@ public final class PowerPassUpgradeCover extends Item {
     @Override
     public void addInformation(ItemStack aStack, EntityPlayer ep, List aList, boolean boo) {
         aList.add(CommonValues.BASS_MARK);
-        aList.add(translateToLocal("item.tm.powerpassupgradecover.desc.0"));//Ender-Fluid-Enables Machines!
-        aList.add(EnumChatFormatting.BLUE + translateToLocal("item.tm.powerpassupgradecover.desc.1"));//Use on any side of a fluid tank to link it to the Ender
-        aList.add(EnumChatFormatting.BLUE + translateToLocal("item.tm.powerpassupgradecover.desc.2"));//Ender Tanks so are laggy -Bot from the Chads of NH
+        aList.add("[WIP]");
+//        aList.add(translateToLocal("item.tm.powerpassupgradecover.desc.0"));
+//        aList.add(EnumChatFormatting.BLUE + translateToLocal("item.tm.powerpassupgradecover.desc.1"));
+//        aList.add(EnumChatFormatting.BLUE + translateToLocal("item.tm.powerpassupgradecover.desc.2"));
     }
 
     public static void run() {
         INSTANCE = new PowerPassUpgradeCover();
         GameRegistry.registerItem(INSTANCE, INSTANCE.getUnlocalizedName());
-        enderLinkFluidCover.set(INSTANCE);
+        powerPassCover.set(INSTANCE);
     }
 
     @Override
