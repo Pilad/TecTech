@@ -25,6 +25,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.reflect.FieldUtils;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 
 import static com.github.technus.tectech.mechanics.tesla.ITeslaConnectable.TeslaUtil.*;
@@ -36,7 +37,7 @@ import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
 public class GT_MetaTileEntity_TeslaCoil extends GT_MetaTileEntity_BasicBatteryBuffer implements ITeslaConnectable {
     //Interface fields
-    private final Multimap<Integer, ITeslaConnectableSimple> teslaNodeMap = MultimapBuilder.treeKeys().linkedListValues().build();
+    private final HashMap<Integer, ITeslaConnectableSimple> teslaNodeMap = new HashMap<>();
     private final HashSet<ThaumSpark> sparkList = new HashSet<>();
     private int sparkCount = 10;
 
@@ -267,7 +268,7 @@ public class GT_MetaTileEntity_TeslaCoil extends GT_MetaTileEntity_BasicBatteryB
     }
 
     @Override
-    public Multimap<Integer, ITeslaConnectableSimple> getTeslaNodeMap() {
+    public HashMap<Integer, ITeslaConnectableSimple> getTeslaNodeMap() {
         return teslaNodeMap;
     }
 

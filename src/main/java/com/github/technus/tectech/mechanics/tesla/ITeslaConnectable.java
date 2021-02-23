@@ -3,6 +3,7 @@ package com.github.technus.tectech.mechanics.tesla;
 import com.github.technus.tectech.mechanics.spark.ThaumSpark;
 import com.google.common.collect.Multimap;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
@@ -10,7 +11,7 @@ import static java.lang.Math.sqrt;
 
 public interface ITeslaConnectable extends ITeslaConnectableSimple {
     //Map with all Teslas in the same dimension and the distance to them //TODO Range
-    Multimap<Integer, ITeslaConnectableSimple> getTeslaNodeMap();
+    HashMap<Integer, ITeslaConnectableSimple> getTeslaNodeMap();
 
     //ThaumCraft lighting coordinate pairs, so we can send them in bursts and save on lag
     HashSet<ThaumSpark> getSparkList();
@@ -93,7 +94,7 @@ public interface ITeslaConnectable extends ITeslaConnectableSimple {
             boolean canSendPower = !origin.isTeslaReadyToReceive() && remainingAmperes > 0;
 
             if (canSendPower) {
-                for (Map.Entry<Integer, ITeslaConnectableSimple> Rx : origin.getTeslaNodeMap().entries()) {
+                for (Map.Entry<Integer, ITeslaConnectableSimple> Rx : origin.getTeslaNodeMap().entrySet()) {
                     //Do we still have power left to send kind of check
                     if (origin.getTeslaStoredEnergy() < (origin.isOverdriveEnabled() ? origin.getTeslaOutputVoltage() *
                             2 : origin.getTeslaOutputVoltage())) break;

@@ -39,6 +39,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 import static com.github.technus.tectech.mechanics.structure.Structure.adders;
@@ -53,7 +54,7 @@ import static net.minecraft.util.StatCollector.translateToLocal;
 
 public class GT_MetaTileEntity_TM_teslaCoil extends GT_MetaTileEntity_MultiblockBase_EM implements IConstructable, ITeslaConnectable {
     //Interface fields
-    private final Multimap<Integer, ITeslaConnectableSimple> teslaNodeMap = MultimapBuilder.treeKeys().linkedListValues().build();
+    private final HashMap<Integer, ITeslaConnectableSimple> teslaNodeMap = new HashMap<>();
     private final HashSet<ThaumSpark> sparkList = new HashSet<>();
     private int sparkCount = 10;
 
@@ -701,7 +702,7 @@ public class GT_MetaTileEntity_TM_teslaCoil extends GT_MetaTileEntity_Multiblock
     }
 
     @Override
-    public Multimap<Integer, ITeslaConnectableSimple> getTeslaNodeMap() {
+    public HashMap<Integer, ITeslaConnectableSimple> getTeslaNodeMap() {
         return teslaNodeMap;
     }
 
