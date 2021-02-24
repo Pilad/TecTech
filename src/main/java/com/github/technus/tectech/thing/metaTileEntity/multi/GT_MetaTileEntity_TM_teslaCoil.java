@@ -39,7 +39,6 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 
 import static com.github.technus.tectech.mechanics.structure.Structure.adders;
@@ -54,7 +53,7 @@ import static net.minecraft.util.StatCollector.translateToLocal;
 
 public class GT_MetaTileEntity_TM_teslaCoil extends GT_MetaTileEntity_MultiblockBase_EM implements IConstructable, ITeslaConnectable {
     //Interface fields
-    private final HashMap<Integer, ITeslaConnectableSimple> teslaNodeMap = new HashMap<>();
+    private final Multimap<Integer, ITeslaConnectableSimple> teslaNodeMap = MultimapBuilder.treeKeys().linkedListValues().build();
     private final HashSet<ThaumSpark> sparkList = new HashSet<>();
     private int sparkCount = 10;
 
@@ -444,9 +443,9 @@ public class GT_MetaTileEntity_TM_teslaCoil extends GT_MetaTileEntity_Multiblock
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister aBlockIconRegister) {
+        super.registerIcons(aBlockIconRegister);
         ScreenOFF = new Textures.BlockIcons.CustomIcon("iconsets/TM_TESLA_TOWER");
         ScreenON = new Textures.BlockIcons.CustomIcon("iconsets/TM_TESLA_TOWER_ACTIVE");
-        super.registerIcons(aBlockIconRegister);
     }
 
     @Override
@@ -599,7 +598,7 @@ public class GT_MetaTileEntity_TM_teslaCoil extends GT_MetaTileEntity_Multiblock
         //Power transfer
         outputCurrentDisplay.set(powerTeslaNodeMap(this));
 
-        //Randomly send all the sparks out once every 3 to 5 seconds
+        //TODO Encapsulate the spark sender
         sparkCount--;
         if (sparkCount == 0){
             IGregTechTileEntity mte = getBaseMetaTileEntity();
@@ -702,7 +701,7 @@ public class GT_MetaTileEntity_TM_teslaCoil extends GT_MetaTileEntity_Multiblock
     }
 
     @Override
-    public HashMap<Integer, ITeslaConnectableSimple> getTeslaNodeMap() {
+    public Multimap<Integer, ITeslaConnectableSimple> getTeslaNodeMap() {
         return teslaNodeMap;
     }
 
