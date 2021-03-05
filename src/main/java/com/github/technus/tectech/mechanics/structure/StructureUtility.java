@@ -466,6 +466,9 @@ public class StructureUtility {
                 @Override
                 public boolean check(T t, World world, int x, int y, int z) {
                     Block worldBlock = world.getBlock(x, y, z);
+                    if (meta == -1) {
+                        return block == worldBlock;
+                    }
                     return block == worldBlock && meta == worldBlock.getDamageValue(world, x, y, z);
                 }
 
