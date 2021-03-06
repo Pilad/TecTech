@@ -366,7 +366,7 @@ public class SpartakCoreRecipeLoader implements Runnable {
                 ItemList.Emitter_ZPM.get(8),
                 ItemList.Robot_Arm_ZPM.get(1),
                 ItemList.Electric_Motor_ZPM.get(2),
-                new Object[]{OrePrefixes.circuit, Materials.Superconductor, 1},
+                new Object[]{OrePrefixes.circuit.get(Materials.Superconductor), 1},
                 new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.cableGt02, Materials.Naquadah, 2)},
                 new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Naquadah, 16)},
                 CustomItemList.DATApipe.get(2),
@@ -492,7 +492,7 @@ public class SpartakCoreRecipeLoader implements Runnable {
         //Quantum Computer
         GT_Values.RA.addAssemblylineRecipe(ItemList.Tool_DataOrb.get(1), 20000, new Object[]{
                 CustomItemList.Machine_Multi_Switch.get(1),
-                new Object[]{OrePrefixes.circuit, Materials.Superconductor, 2},
+                new Object[]{OrePrefixes.circuit.get(Materials.Superconductor), 2},
                 ItemList.Tool_DataOrb.get(1),
                 ItemList.Cover_Screen.get(1),
                 new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.wireGt04, Materials.SuperconductorUV, 8)},
@@ -508,7 +508,7 @@ public class SpartakCoreRecipeLoader implements Runnable {
         GT_Values.RA.addAssemblylineRecipe(ItemList.Machine_IV_Scanner.get(1), 80000, new Object[]{
                 CustomItemList.Machine_Multi_Switch.get(1),
                 ItemList.Sensor_ZPM.get(8),
-                new Object[]{OrePrefixes.circuit, Materials.Superconductor, 4},
+                new Object[]{OrePrefixes.circuit.get(Materials.Superconductor), 4},
                 ItemList.Field_Generator_ZPM.get(1),
                 ItemList.Electric_Motor_ZPM.get(2),
                 new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.cableGt02, Materials.Naquadah, 4)},
@@ -523,12 +523,12 @@ public class SpartakCoreRecipeLoader implements Runnable {
 
         //Matter Junction
         TT_recipeAdder.addResearchableAssemblylineRecipe(CustomItemList.Machine_Multi_Switch.get(1),
-                8000,32, 500000, 4, new ItemStack[]{
+                8000,32, 500000, 4, new Object[]{
                 CustomItemList.Machine_Multi_Transformer.get(1),
                 GT_OreDictUnificator.get(OrePrefixes.pipeMedium, Materials.Naquadah, 4),
                 ItemList.Robot_Arm_LuV.get(2),
                 ItemList.Electric_Piston_LuV.get(2),
-                ItemList.Circuit_Wetwaresupercomputer.get(2),
+                new Object[]{OrePrefixes.circuit.get(Materials.Superconductor), 2},
                 GT_OreDictUnificator.get(OrePrefixes.wireGt02, Materials.Superconductor, 4),
         }, new FluidStack[]{
                 Materials.UUMatter.getFluid(1000),
@@ -539,11 +539,11 @@ public class SpartakCoreRecipeLoader implements Runnable {
 
         //Matter Quantizer
         TT_recipeAdder.addResearchableAssemblylineRecipe(ItemList.Hatch_Input_UV.get(1),
-                12000,32, 500000, 6, new ItemStack[]{
+                12000,32, 500000, 6, new Object[]{
                 CustomItemList.Machine_Multi_Transformer.get(1),
                 GT_OreDictUnificator.get(OrePrefixes.pipeMedium, Materials.Naquadah, 4),
                 ItemList.Emitter_UV.get(2),
-                ItemList.Circuit_Wetwaresupercomputer.get(1),
+                new Object[]{OrePrefixes.circuit.get(Materials.Superconductor), 1},
                 GT_OreDictUnificator.get(OrePrefixes.wireGt02, Materials.Superconductor, 2),
         }, new FluidStack[]{
                 Materials.UUMatter.getFluid(1000),
@@ -554,11 +554,11 @@ public class SpartakCoreRecipeLoader implements Runnable {
 
         //Matter DeQuantizer
         TT_recipeAdder.addResearchableAssemblylineRecipe(ItemList.Hatch_Output_UV.get(1),
-                12000,32, 500000, 6, new ItemStack[]{
+                12000,32, 500000, 6, new Object[]{
                 CustomItemList.Machine_Multi_Transformer.get(1),
                 GT_OreDictUnificator.get(OrePrefixes.pipeMedium, Materials.Naquadah, 4),
                 ItemList.Sensor_UV.get(2),
-                ItemList.Circuit_Wetwaresupercomputer.get(1),
+                new Object[]{OrePrefixes.circuit.get(Materials.Superconductor), 1},
                 GT_OreDictUnificator.get(OrePrefixes.wireGt02, Materials.Superconductor, 2),
         }, new FluidStack[]{
                 Materials.UUMatter.getFluid(1000),
