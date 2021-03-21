@@ -26,6 +26,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 
+import java.text.NumberFormat;
 import java.util.*;
 
 import static com.github.technus.tectech.Reference.MODID;
@@ -272,9 +273,9 @@ public class GT_MetaTileEntity_DataReader extends GT_MetaTileEntity_BasicMachine
                 int time=itemStack.stackTagCompound.getInteger("time");
                 int EUt=itemStack.stackTagCompound.getInteger("eu");
                 font.drawString("Assembly Line Recipe", 7, 8, 0x80a0ff);
-                font.drawString(GT_Utility.trans("152","Total: ") + ((long)time * EUt) + " EU",7,93, 0x80a0ff);
-                font.drawString(GT_Utility.trans("153","Usage: ") + EUt + " EU/t",7,103, 0x80a0ff);
-                font.drawString(GT_Utility.trans("154","Voltage: ") + EUt + " EU",7,113, 0x80a0ff);
+                font.drawString(GT_Utility.trans("152","Total: ") + NumberFormat.getNumberInstance().format((long)time * EUt) + " EU",7,93, 0x80a0ff);
+                font.drawString(GT_Utility.trans("153","Usage: ") + NumberFormat.getNumberInstance().format(EUt) + " EU/t",7,103, 0x80a0ff);
+                font.drawString(GT_Utility.trans("154","Voltage: ") + NumberFormat.getNumberInstance().format(EUt) + " EU",7,113, 0x80a0ff);
                 font.drawString(GT_Utility.trans("155","Amperage: ") + 1 ,7,123, 0x80a0ff);
                 font.drawString( GT_Utility.trans("158","Time: ")+String.format("%.2f " + GT_Utility.trans("161"," secs"), 0.05F * time), 7,133, 0x80a0ff);
 
