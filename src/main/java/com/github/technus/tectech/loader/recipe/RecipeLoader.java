@@ -87,9 +87,9 @@ public class RecipeLoader implements Runnable {
                         'E', ItemList.Hull_IV});
 
         //Data Bank
-        RA.addAssemblylineRecipe(ItemList.Hatch_DataAccess_EV.get(1), 20000, new ItemStack[]{
+        RA.addAssemblylineRecipe(ItemList.Hatch_DataAccess_EV.get(1), 20000, new Object[]{
                 CustomItemList.Machine_Multi_Switch.get(1),
-                GT_OreDictUnificator.get(OrePrefixes.circuit, Materials.Master, 2),
+                new Object[]{OrePrefixes.circuit.get(Materials.Master), 2},
                 ItemList.Tool_DataOrb.get(1),
                 ItemList.Cover_Screen.get(1),
         }, new FluidStack[]{
