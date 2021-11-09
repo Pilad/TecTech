@@ -1,10 +1,18 @@
 buildscript {
     repositories {
-        maven {
-            name = "mavenLocal"
-            url = "mavenLocal"
-        }
         mavenCentral()
+        jcenter()
+        maven {
+            url = "https://jcenter.bintray.com/"
+        }
+        maven {
+            name = "MavenRepo"
+            url = "https://repo.maven.apache.org/maven2"
+        }
+        maven {
+            name = "gt"
+            url = "https://gregtech.overminddl1.com/"
+        }
         maven {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
@@ -13,34 +21,22 @@ buildscript {
             name = "sonatype"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2.2-SNAPSHOT'
-        classpath "de.undercouch:gradle-download-task:3.1.2"
+        classpath ('com.anatawa12.forge:ForgeGradle:1.2-1.0.+') {
+            changing = true
+        }
     }
 }
 
-plugins {
-    id 'org.ajoberstar.grgit' version '3.1.1'
-}
-
-file "build.properties" withReader {
-    def prop = new Properties()
-    prop.load(it)
-    ext.config = new ConfigSlurper().parse prop
-}
-
-def getVersionAppendage() {
-    def proc = "git rev-parse --short HEAD".execute()
-    proc.waitFor()
-    return "DEV." + proc.exitValue() ? proc.text.trim() : "GITBORK"
-}
-
-ext.set("minecraftVersion","${config.minecraft.version}-${config.forge.version}-${config.minecraft.version}")
-
-import de.undercouch.gradle.tasks.download.Download
 apply plugin: 'forge'
 apply plugin: 'signing'
+
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 allprojects {
     apply plugin: 'java'
@@ -57,14 +53,22 @@ sourceSets {
     }
 }
 
+file "build.properties" withReader {
+    def prop = new Properties()
+    prop.load(it)
+    ext.config = new ConfigSlurper().parse prop
+}
+
 version = "${config.minecraft.version}-${config.tectech.version}"
 group = "com.github.technus"
 archivesBaseName = "TecTech"
 
-minecraft.version = ext.get("minecraftVersion")
-minecraft.runDir = "eclipse"
-minecraft.replaceIn "src/main/java/com/github/technus/tectech/Reference.java"
-minecraft.replace "GRADLETOKEN_VERSION", "${config.tectech.version}"
+minecraft {
+    version = "${config.minecraft.version}-${config.forge.version}-${config.minecraft.version}"
+    runDir = "idea"
+    replaceIn "src/main/java/com/github/technus/tectech/Reference.java"
+    replace "GRADLETOKEN_VERSION", "${config.tectech.version}"
+}
 
 configurations {
     provided
@@ -130,28 +134,6 @@ dependencies {
     compile files("libs/CoFHCore-[1.7.10]3.0.3-303-dev.jar")
 }
 
-task getGregTech(type: Download) {
-    onlyIf {
-        !file("libs/gregtech-5.09.34.66-impact-dev.jar").exists()
-    }
-    src "http://gtimpact.space:8080/job/GREGTECH/lastSuccessfulBuild/artifact/build/libs/gregtech-5.09.34.66-impact-dev.jar"
-    dest file("libs/gregtech-5.09.34.66-impact-dev.jar")
-    mustRunAfter "deobfBinJar"
-    mustRunAfter "repackMinecraft"
-}
-
-task getAE(type: Download) {
-    onlyIf {
-        !file("libs/appliedenergistics2-rv3-33-impact-dev.jar").exists()
-    }
-    src "http://gtimpact.space:8080/job/APPLIED-ENERGISTICS-2/lastSuccessfulBuild/artifact/build/libs/appliedenergistics2-rv3-33-impact-dev.jar"
-    dest file("libs/appliedenergistics2-rv3-33-impact-dev.jar")
-    mustRunAfter "deobfBinJar"
-    mustRunAfter "repackMinecraft"
-}
-
-
-
 task submodulesUpdate(type: Exec) {
     description 'Updates (and inits) git submodules'
     commandLine 'git', 'submodule', 'update', '--init', '--recursive','--remote'
@@ -163,16 +145,6 @@ tasks.setupDevWorkspace.dependsOn submodulesUpdate
 tasks.setupDecompWorkspace.dependsOn submodulesUpdate
 tasks.compileJava.dependsOn submodulesUpdate
 tasks.sourceMainJava.dependsOn submodulesUpdate
-
-tasks.setupCIWorkspace.dependsOn getGregTech
-tasks.setupDevWorkspace.dependsOn getGregTech
-tasks.setupDecompWorkspace.dependsOn getGregTech
-tasks.compileJava.dependsOn getGregTech
-
-tasks.setupCIWorkspace.dependsOn getAE
-tasks.setupDevWorkspace.dependsOn getAE
-tasks.setupDecompWorkspace.dependsOn getAE
-tasks.compileJava.dependsOn getAE
 
 processResources
         {
