@@ -559,7 +559,7 @@ public class MachineLoader implements Runnable {
         // ===================================================================================================
 
         Machine_OwnerDetector.set(new GT_MetaTileEntity_OwnerDetector(15480, "machine.tt.ownerdetector", "Owner detector", 3).getStackForm(1L));
-        Machine_DataReader.set(new GT_MetaTileEntity_DataReader(15481, "machine.tt.datareader", "Data Reader", 5).getStackForm(1L));
+//        Machine_DataReader.set(new GT_MetaTileEntity_DataReader(15481, "machine.tt.datareader", "Data Reader", 5).getStackForm(1L));
 
         // ===================================================================================================
         // Buck Converters
