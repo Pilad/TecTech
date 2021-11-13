@@ -76,15 +76,15 @@ public class RecipeLoader implements Runnable {
                         'G', OrePrefixes.plate.get(Materials.Glass),
                         'E', OrePrefixes.gem.get(Materials.EnderPearl)});
 
-        //Data reader
-        GT_ModHandler.addCraftingRecipe(CustomItemList.Machine_DataReader.get(1),
-                GT_ModHandler.RecipeBits.BUFFERED | GT_ModHandler.RecipeBits.NOT_REMOVABLE,
-                new Object[]{"BdB","GES","PwP",
-                        'B', OrePrefixes.screw.get(Materials.Iridium),
-                        'P', OrePrefixes.plate.get(Materials.Iridium),
-                        'G', ItemList.Cover_Screen,
-                        'S', OrePrefixes.circuit.get(Materials.Elite),
-                        'E', ItemList.Hull_IV});
+//        //Data reader
+//        GT_ModHandler.addCraftingRecipe(CustomItemList.Machine_DataReader.get(1),
+//                GT_ModHandler.RecipeBits.BUFFERED | GT_ModHandler.RecipeBits.NOT_REMOVABLE,
+//                new Object[]{"BdB","GES","PwP",
+//                        'B', OrePrefixes.screw.get(Materials.Iridium),
+//                        'P', OrePrefixes.plate.get(Materials.Iridium),
+//                        'G', ItemList.Cover_Screen,
+//                        'S', OrePrefixes.circuit.get(Materials.Elite),
+//                        'E', ItemList.Hull_IV});
 
         //Data Bank
         RA.addAssemblylineRecipe(ItemList.Hatch_DataAccess_EV.get(1), 20000, new Object[]{
