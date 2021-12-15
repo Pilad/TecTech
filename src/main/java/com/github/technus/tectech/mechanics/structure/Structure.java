@@ -1,9 +1,8 @@
 package com.github.technus.tectech.mechanics.structure;
 
 import com.github.technus.tectech.TecTech;
-import com.github.technus.tectech.mechanics.alignment.enumerable.ExtendedFacing;
-import com.github.technus.tectech.mechanics.structure.adders.IHatchAdder;
 import com.github.technus.tectech.thing.casing.TT_Container_Casings;
+import com.impact.util.multis.IGT_HatchAdder;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import net.minecraft.block.Block;
@@ -11,26 +10,30 @@ import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import space.impact.api.multiblocks.alignment.enumerable.ExtendedFacing;
+import space.impact.api.multiblocks.structure.ICustomBlockSetting;
 
 import static com.github.technus.tectech.loader.TecTechConfig.DEBUG_MODE;
 
 @Deprecated
 public class Structure {
-    private Structure(){
+    private Structure() {
     }
-
+    
+    @Deprecated
     @SafeVarargs
-    public static <T> IHatchAdder<T>[] adders(IHatchAdder<T>... iHatchAdder) {
+    public static <T> IGT_HatchAdder<T>[] adders(IGT_HatchAdder<T>... iHatchAdder) {
         return iHatchAdder;
     }
-
+    
     //Check Machine Structure based on string[][] (effectively char[][][]), ond offset of the controller
     //This only checks for REGULAR BLOCKS!
+    @Deprecated
     public static <T extends IMetaTileEntity> boolean checker(
             String[][] structure,//0-9 casing, +- air no air, A... ignore 'A'-CHAR-1 blocks
             Block[] blockType,//use numbers 0-9 for casing types
             byte[] blockMeta,//use numbers 0-9 for casing types
-            IHatchAdder<T>[] addingMethods,
+            IGT_HatchAdder<T>[] addingMethods,
             short[] casingTextures,
             Block[] blockTypeFallback,//use numbers 0-9 for casing types
             byte[] blockMetaFallback,//use numbers 0-9 for casing types
@@ -47,9 +50,9 @@ public class Structure {
         if (extendedFacing == null) {
             extendedFacing = ExtendedFacing.of(ForgeDirection.getOrientation(aBaseMetaTileEntity.getFrontFacing()));
         }
-
+        
         IGregTechTileEntity igt;
-
+        
         int[] xyz = new int[3];
         int[] abc = new int[3];
         int pointer;
@@ -59,7 +62,7 @@ public class Structure {
         //a,b,c - relative to block face!
         //x,y,z - relative to block position on map!
         //yPos  - absolute height of checked block
-
+        
         //perform your duties
         abc[2] = -depthOffset;
         for (String[] _structure : structure) {//front to back
@@ -84,12 +87,12 @@ public class Structure {
                         xyz[0] += baseX;
                         xyz[1] += baseY;
                         xyz[2] += baseZ;
-
+                        
                         //that must be here since in some cases other axis (b,c) controls y
                         if (xyz[1] < 0 || xyz[1] >= 256) {
                             return false;
                         }
-
+                        
                         //Check block
                         if (world.blockExists(xyz[0], xyz[1], xyz[2])) {//this actually checks if the chunk is loaded at this pos
                             switch (block) {
@@ -114,22 +117,22 @@ public class Structure {
                                             }
                                             return false;
                                         }
-                                        if (dmg  != blockMeta[pointer]) {
+                                        if (dmg != blockMeta[pointer]) {
                                             if (DEBUG_MODE) {
-                                                TecTech.LOGGER.info("Struct-meta-id-error " + xyz[0] + ' ' + xyz[1] + ' ' + xyz[2] + " / " + abc[0] + ' ' + abc[1] + ' ' + abc[2] + " / " + dmg  + ' ' + blockMeta[pointer]);
+                                                TecTech.LOGGER.info("Struct-meta-id-error " + xyz[0] + ' ' + xyz[1] + ' ' + xyz[2] + " / " + abc[0] + ' ' + abc[1] + ' ' + abc[2] + " / " + dmg + ' ' + blockMeta[pointer]);
                                             }
                                             return false;
                                         }
                                     } else if ((pointer = block - ' ') >= 0) {
                                         igt = aBaseMetaTileEntity.getIGregTechTileEntity(xyz[0], xyz[1], xyz[2]);
                                         if (igt == null || !addingMethods[pointer].apply(metaTile, igt, casingTextures[pointer])) {
-                                            if (world.getBlock(xyz[0], xyz[1], xyz[2]) != blockTypeFallback[pointer]) {
+                                            if (worldblock != blockTypeFallback[pointer]) {
                                                 if (DEBUG_MODE) {
                                                     TecTech.LOGGER.info("Fallback-struct-block-error " + xyz[0] + ' ' + xyz[1] + ' ' + xyz[2] + " / " + abc[0] + ' ' + abc[1] + ' ' + abc[2] + " / " + worldblock.getUnlocalizedName() + ' ' + (blockTypeFallback[pointer] == null ? "null" : blockTypeFallback[pointer].getUnlocalizedName()));
                                                 }
                                                 return false;
                                             }
-                                            if (dmg  != blockMetaFallback[pointer]) {
+                                            if (dmg != blockMetaFallback[pointer]) {
                                                 if (DEBUG_MODE) {
                                                     TecTech.LOGGER.info("Fallback-Struct-meta-id-error " + xyz[0] + ' ' + xyz[1] + ' ' + xyz[2] + " / " + abc[0] + ' ' + abc[1] + ' ' + abc[2] + " / " + dmg + ' ' + blockMetaFallback[pointer]);
                                                 }
@@ -150,7 +153,8 @@ public class Structure {
         }
         return true;
     }
-
+    
+    @Deprecated
     public static boolean builder(String[][] structure,//0-9 casing, +- air no air, A... ignore 'A'-CHAR+1 blocks
                                   Block[] blockType,//use numbers 0-9 for casing types
                                   byte[] blockMeta,//use numbers 0-9 for casing types
@@ -163,15 +167,15 @@ public class Structure {
         if (world == null || (!world.isRemote && hintsOnly)) {
             return false;
         }
-
+        
         //TE Rotation
         int[] xyz = new int[3];
         int[] abc = new int[3];
         int pointer;
-
+        
         //a,b,c - relative to block face!
         //x,y,z - relative to block position on map!
-
+        
         //perform your duties
         abc[2] = -depthOffset;
         for (String[] _structure : structure) {//front to back
@@ -197,12 +201,12 @@ public class Structure {
                         xyz[0] += baseX;
                         xyz[1] += baseY;
                         xyz[2] += baseZ;
-
+                        
                         //that must be here since in some cases other axis (b,c) controls y
                         if (xyz[1] < 0 || xyz[1] >= 256) {
                             return false;
                         }
-
+                        
                         //Check block
                         if (world.blockExists(xyz[0], xyz[1], xyz[2])) {//this actually checks if the chunk is loaded
                             if (hintsOnly) {
