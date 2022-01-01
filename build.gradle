@@ -108,6 +108,7 @@ repositories {
 }
 
 dependencies {
+    provided fileTree(dir: 'run/', include:'*.jar')
     compile "eu.usrv:YAMCore:${config.minecraft.version}-${config.yamcore.version}:deobf"
     compile "net.industrial-craft:industrialcraft-2:${config.ic2.version}:dev"
 	compile "net.sengir.forestry:forestry_${config.minecraft.version}:${config.forestry.version}:api"
