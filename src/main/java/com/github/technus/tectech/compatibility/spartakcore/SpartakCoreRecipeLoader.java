@@ -283,8 +283,8 @@ public class SpartakCoreRecipeLoader implements Runnable {
                 new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Naquadah, 16)},
                 CustomItemList.DATApipe.get(2),
         }, new FluidStack[]{
-                Materials.UUMatter.getFluid(500),
-                Materials.Iridium.getMolten(1000),
+                Materials.SolderingAlloy.getMolten(1296),
+                Materials.Iridium.getMolten(1296),
                 new FluidStack(FluidRegistry.getFluid("ic2coolant"), 1000)
         }, CustomItemList.holder_Hatch.get(1), 1200, 100000);
 
@@ -410,7 +410,7 @@ public class SpartakCoreRecipeLoader implements Runnable {
                 new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.wireGt04, Materials.SuperconductorUV, 8)},
                 CustomItemList.DATApipe.get(8),
         }, new FluidStack[]{
-                Materials.UUMatter.getFluid(1000),
+                Materials.SolderingAlloy.getMolten(1296),
                 Materials.Iridium.getMolten(1296),
                 new FluidStack(FluidRegistry.getFluid("ic2coolant"), 2000),
                 Materials.Hydrogen.getGas(1000),
@@ -427,7 +427,7 @@ public class SpartakCoreRecipeLoader implements Runnable {
                 new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Naquadah, 32)},
                 CustomItemList.DATApipe.get(16),
         }, new FluidStack[]{
-                Materials.UUMatter.getFluid(1000),
+                Materials.SolderingAlloy.getMolten(1296),
                 Materials.Iridium.getMolten(1296),
                 new FluidStack(FluidRegistry.getFluid("ic2coolant"), 2000),
                 Materials.Osmium.getMolten(1296),
@@ -443,7 +443,7 @@ public class SpartakCoreRecipeLoader implements Runnable {
                 new Object[]{OrePrefixes.circuit.get(Materials.Superconductor), 2},
                 GT_OreDictUnificator.get(OrePrefixes.wireGt02, Materials.Superconductor, 4),
         }, new FluidStack[]{
-                Materials.UUMatter.getFluid(1000),
+                Materials.SolderingAlloy.getMolten(1296),
                 Materials.Naquadah.getMolten(1296),
                 new FluidStack(FluidRegistry.getFluid("ic2coolant"), 2000),
                 Materials.Osmium.getMolten(1296),
@@ -458,7 +458,7 @@ public class SpartakCoreRecipeLoader implements Runnable {
                 new Object[]{OrePrefixes.circuit.get(Materials.Superconductor), 1},
                 GT_OreDictUnificator.get(OrePrefixes.wireGt02, Materials.Superconductor, 2),
         }, new FluidStack[]{
-                Materials.UUMatter.getFluid(1000),
+                Materials.SolderingAlloy.getMolten(1296),
                 Materials.Naquadah.getMolten(1296),
                 new FluidStack(FluidRegistry.getFluid("ic2coolant"), 2000),
                 Materials.Osmium.getMolten(1296),
@@ -473,7 +473,7 @@ public class SpartakCoreRecipeLoader implements Runnable {
                 new Object[]{OrePrefixes.circuit.get(Materials.Superconductor), 1},
                 GT_OreDictUnificator.get(OrePrefixes.wireGt02, Materials.Superconductor, 2),
         }, new FluidStack[]{
-                Materials.UUMatter.getFluid(1000),
+                Materials.SolderingAlloy.getMolten(1296),
                 Materials.Naquadah.getMolten(1296),
                 new FluidStack(FluidRegistry.getFluid("ic2coolant"), 2000),
                 Materials.Osmium.getMolten(1296),
