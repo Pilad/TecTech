@@ -12,6 +12,7 @@ import net.minecraft.util.EnumChatFormatting;
 
 import static net.minecraft.util.StatCollector.translateToLocal;
 
+@Deprecated
 public class GT_MetaTileEntity_Hatch_CreativeMaintenance extends GT_MetaTileEntity_Hatch_Maintenance {
     public GT_MetaTileEntity_Hatch_CreativeMaintenance(int aID, String aName, String aNameRegional, int aTier) {
         super(aID, aName, aNameRegional, aTier);
