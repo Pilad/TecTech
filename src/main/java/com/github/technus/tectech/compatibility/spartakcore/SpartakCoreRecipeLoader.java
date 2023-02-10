@@ -383,15 +383,6 @@ public class SpartakCoreRecipeLoader implements Runnable {
                 ItemList.Upgrade_Overclocker.get(4),
         }, Materials.Silver.getMolten(576), CustomItemList.Machine_Multi_TeslaCoil.get(1), 800, 480);
 
-        //Microwave Grinder
-        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                ItemList.Machine_HV_Microwave.get(1),
-                GT_OreDictUnificator.get(OrePrefixes.plate, Materials.StainlessSteel, 4),
-                GT_OreDictUnificator.get(OrePrefixes.circuit, Materials.Advanced, 4),
-                GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.AnnealedCopper, 16),
-                ItemList.Upgrade_Overclocker.get(4),
-        }, Materials.Copper.getMolten(576), CustomItemList.Machine_Multi_Microwave.get(1), 800, 480);
-
         //Network Switch
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
                 CustomItemList.Machine_Multi_Transformer.get(1),

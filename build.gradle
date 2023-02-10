@@ -108,7 +108,7 @@ repositories {
 }
 
 dependencies {
-    provided fileTree(dir: 'run/', include:'*.jar')
+    provided fileTree(dir: 'libs/', include:'*.jar')
     compile "eu.usrv:YAMCore:${config.minecraft.version}-${config.yamcore.version}:deobf"
     compile "net.industrial-craft:industrialcraft-2:${config.ic2.version}:dev"
 	compile "net.sengir.forestry:forestry_${config.minecraft.version}:${config.forestry.version}:api"
@@ -131,8 +131,6 @@ dependencies {
 	compile "micdoodle8.mods:Galacticraft-Planets:${config.galacticraft.version}:Dev"
 	compile "micdoodle8.mods:Galacticraft:${config.galacticraft.version}:API"
 	compile "com.mod-buildcraft:buildcraft:${config.buildcraft.version}:dev"
-	//Ivy
-    compile files("libs/CoFHCore-[1.7.10]3.0.3-303-dev.jar")
 }
 
 task submodulesUpdate(type: Exec) {
